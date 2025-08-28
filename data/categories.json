@@ -1,0 +1,3892 @@
+[
+   {
+      "type":"Vente",
+      "nameCategory":"Immobilier & Terrains",
+      "commonAttributes":[
+         {
+            "key":"Superficie",
+            "value":null,
+            "valueType":"integer",
+            "unit":"m²",
+            "required":true,
+            "filterable":true
+         }
+      ],
+      "subCategory":[
+         {
+            "name":"Maisons et Villas",
+            "specificAttributes":[
+               {
+                  "key":"État du bien",
+                  "value":[
+                     "Neuf",
+                     "Occasion"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Nombre de chambres",
+                  "value":null,
+                  "valueType":"integer",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Nombre de salles de bain",
+                  "value":null,
+                  "valueType":"integer",
+                  "unit":null,
+                  "required":true,
+                  "filterable":false
+               }
+            ]
+         },
+         {
+            "name":"Appartements",
+            "specificAttributes":[
+               {
+                  "key":"État du bien",
+                  "value":[
+                     "Neuf",
+                     "Occasion"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Nombre de chambres",
+                  "value":null,
+                  "valueType":"integer",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Nombre de salles de bain",
+                  "value":null,
+                  "valueType":"integer",
+                  "unit":null,
+                  "required":true,
+                  "filterable":false
+               }
+            ]
+         },
+         {
+            "name":" Locaux Professionnels",
+            "specificAttributes":[
+               {
+                  "key":"Type de local",
+                  "value":[
+                     "Magasin",
+                     "Bureau",
+                     "Entrepôt",
+                     "Locaux Industriels",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Nombre de chambres",
+                  "value":null,
+                  "valueType":"integer",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Nombre de salles de bain",
+                  "value":null,
+                  "valueType":"integer",
+                  "unit":null,
+                  "required":true,
+                  "filterable":false
+               }
+            ]
+         },
+         {
+            "name":"Terrains et Fermes",
+            "specificAttributes":[
+               {
+                  "key":"Type de propriété",
+                  "value":[
+                     "Terrain à bâtir",
+                     "Terrain agricole",
+                     "Ferme",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Autres Immobiliers",
+            "specificAttributes":[
+               
+            ]
+         }
+      ]
+   },
+   {
+      "type":"Vente",
+      "nameCategory":"Véhicules & Transport",
+      "commonAttributes":[
+         {
+            "key":"Localisation",
+            "value":null,
+            "valueType":"string",
+            "unit":null,
+            "required":true,
+            "filterable":true
+         },
+         {
+            "key":"État",
+            "value":[
+               "Neuf",
+               "Occasion"
+            ],
+            "valueType":"list selection",
+            "unit":null,
+            "required":true,
+            "filterable":true
+         }
+      ],
+      "subCategory":[
+         {
+            "name":"Voitures",
+            "specificAttributes":[
+               {
+                  "key":"Modèle",
+                  "value":[
+                     {
+                        "key":"AC",
+                        "value":[
+                           "Cobra",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Abarth",
+                        "value":[
+                           "124",
+                           "500",
+                           "600",
+                           "Grande Punto",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Alfa Romeo",
+                        "value":[
+                           "145",
+                           "146",
+                           "147",
+                           "155",
+                           "156",
+                           "156 Crosswagon",
+                           "159",
+                           "164",
+                           "166",
+                           "33",
+                           "4C",
+                           "6C",
+                           "75",
+                           "8C",
+                           "90",
+                           "Alfasud",
+                           "Alfetta",
+                           "Brera",
+                           "GT",
+                           "GTV",
+                           "Giulia",
+                           "Giulietta",
+                           "Junior",
+                           "Junior Zagato",
+                           "MiTo",
+                           "Montreal",
+                           "SZ/RZ",
+                           "Spider",
+                           "Sprint",
+                           "Stelvio",
+                           "Tonale",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Audi",
+                        "value":[
+                           "100",
+                           "200",
+                           "80",
+                           "90",
+                           "A1",
+                           "A2",
+                           "A3",
+                           "A4",
+                           "A4 Allroad",
+                           "A5",
+                           "A6",
+                           "A6 Allroad",
+                           "A7",
+                           "A8",
+                           "Cabriolet",
+                           "Coupé",
+                           "Q2",
+                           "Q3",
+                           "Q4",
+                           "Q5",
+                           "Q6",
+                           "Q7",
+                           "Q8",
+                           "Quattro",
+                           "R8",
+                           "RS Q3",
+                           "RS Q8",
+                           "RS2",
+                           "RS3",
+                           "RS4",
+                           "RS5",
+                           "RS6",
+                           "RS7",
+                           "S1",
+                           "S2",
+                           "S3",
+                           "S4",
+                           "S5",
+                           "S6",
+                           "S7",
+                           "S8",
+                           "SQ2",
+                           "SQ5",
+                           "SQ6",
+                           "SQ7",
+                           "SQ8",
+                           "T1",
+                           "TT",
+                           "TT RS",
+                           "TTS",
+                           "V8",
+                           "e-tron",
+                           "e-tron GT",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"BMW",
+                        "value":[
+                           "1500 à 2000",
+                           "1M",
+                           "2002",
+                           "C/CS/CSL",
+                           "Isetta",
+                           "M2",
+                           "M3",
+                           "M4",
+                           "M5",
+                           "M6",
+                           "M8",
+                           "Série 1",
+                           "Série 2",
+                           "Série 3",
+                           "Série 4",
+                           "Série 5",
+                           "Série 6",
+                           "Série 7",
+                           "Série 8",
+                           "X1",
+                           "X2",
+                           "X3",
+                           "X4",
+                           "X5",
+                           "X6",
+                           "X7",
+                           "XM",
+                           "Z1",
+                           "Z3",
+                           "Z4",
+                           "Z8",
+                           "i3",
+                           "i4",
+                           "i5",
+                           "i7",
+                           "i8",
+                           "iX",
+                           "iX1",
+                           "iX2",
+                           "iX3",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Bentley",
+                        "value":[
+                           "Armage",
+                           "Azure",
+                           "Bentayga",
+                           "Brooklands",
+                           "Continental",
+                           "Continental GT",
+                           "Continental GTC",
+                           "Continental R",
+                           "Eight",
+                           "Flying Spur",
+                           "Mark VI",
+                           "Mulsanne",
+                           "S",
+                           "T",
+                           "Turbo",
+                           "Turbo R",
+                           "Type R",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"BYD",
+                        "value":[
+                           "Atto 2",
+                           "Atto 3",
+                           "Dolphin",
+                           "Dolphin Surf",
+                           "Han",
+                           "Seal",
+                           "Seal U",
+                           "Sealion 7",
+                           "Tang",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Chery",
+                        "value":[
+                           "A1",
+                           "A3",
+                           "A5",
+                           "A113",
+                           "A516",
+                           "Eastar",
+                           "QQ",
+                           "QQ6",
+                           "Tiggo",
+                           "Tiggo 1X",
+                           "V525",
+                           "V5",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Chevrolet",
+                        "value":[
+                           "Avalanche",
+                           "Aveo",
+                           "Bel Air",
+                           "Beretta",
+                           "Biscayne",
+                           "Blazer",
+                           "C1500",
+                           "Camaro",
+                           "Caprice",
+                           "Captiva",
+                           "Cavalier",
+                           "Chevelle",
+                           "Chevelle Malibu",
+                           "Chevy Van",
+                           "Citation",
+                           "Colorado",
+                           "Concours",
+                           "Corsica",
+                           "Corvair",
+                           "Corvette",
+                           "Cruze",
+                           "Delray",
+                           "Deluxe",
+                           "El Camino",
+                           "Epica",
+                           "Equinox",
+                           "Evanda",
+                           "Impala",
+                           "Lumina",
+                           "Malibu",
+                           "Monte Carlo",
+                           "Monza",
+                           "Nova",
+                           "Nomad",
+                           "Silverado",
+                           "SSR",
+                           "Suburban",
+                           "Tahoe",
+                           "Tracker",
+                           "TrailBlazer",
+                           "Trax",
+                           "Venture",
+                           "Volt",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Chrysler",
+                        "value":[
+                           "300C",
+                           "300M",
+                           "Grand Voyager",
+                           "Pacifica",
+                           "PT Cruiser",
+                           "Sebring",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Citroën",
+                        "value":[
+                           "2CV",
+                           "AX",
+                           "Berlingo",
+                           "BX",
+                           "C1",
+                           "C2",
+                           "C3",
+                           "C3 Aircross",
+                           "C3 Picasso",
+                           "C4",
+                           "C4 Cactus",
+                           "C4 Picasso",
+                           "C4 SpaceTourer",
+                           "C5",
+                           "C5 Aircross",
+                           "C6",
+                           "C8",
+                           "CX",
+                           "DS3",
+                           "DS4",
+                           "DS5",
+                           "Evasion",
+                           "Jumper",
+                           "Jumpy",
+                           "Nemo",
+                           "Saxo",
+                           "Xantia",
+                           "XM",
+                           "Xsara",
+                           "Xsara Picasso",
+                           "ZX",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Dacia",
+                        "value":[
+                           "Dokker",
+                           "Duster",
+                           "Lodgy",
+                           "Logan",
+                           "Sandero",
+                           "Solenza",
+                           "Spring",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Daewoo",
+                        "value":[
+                           "Espero",
+                           "Lanos",
+                           "Leganza",
+                           "Matiz",
+                           "Nexia",
+                           "Nubira",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Fiat",
+                        "value":[
+                           "124",
+                           "126",
+                           "127",
+                           "128",
+                           "131",
+                           "500",
+                           "500L",
+                           "500X",
+                           "Barchetta",
+                           "Bravo",
+                           "Cinquecento",
+                           "Croma",
+                           "Doblo",
+                           "Ducato",
+                           "Fiorino",
+                           "Grande Punto",
+                           "Idea",
+                           "Linea",
+                           "Marea",
+                           "Multipla",
+                           "Panda",
+                           "Punto",
+                           "Qubo",
+                           "Regata",
+                           "Ritmo",
+                           "Scudo",
+                           "Sedici",
+                           "Stilo",
+                           "Strada",
+                           "Tempra",
+                           "Tipo",
+                           "Ulysse",
+                           "Uno",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Ford",
+                        "value":[
+                           "B-Max",
+                           "Bronco",
+                           "C-Max",
+                           "EcoSport",
+                           "Edge",
+                           "Escape",
+                           "Explorer",
+                           "F-150",
+                           "Fiesta",
+                           "Focus",
+                           "Fusion",
+                           "Galaxy",
+                           "Ka",
+                           "Kuga",
+                           "Mondeo",
+                           "Mustang",
+                           "Puma",
+                           "Ranger",
+                           "S-Max",
+                           "Sierra",
+                           "Taurus",
+                           "Tourneo",
+                           "Transit",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Honda",
+                        "value":[
+                           "Accord",
+                           "City",
+                           "Civic",
+                           "CR-V",
+                           "CR-Z",
+                           "Element",
+                           "Fit",
+                           "HR-V",
+                           "Insight",
+                           "Jazz",
+                           "Legend",
+                           "Odyssey",
+                           "Passport",
+                           "Pilot",
+                           "Prelude",
+                           "Ridgeline",
+                           "S2000",
+                           "Stream",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Hyundai",
+                        "value":[
+                           "Accent",
+                           "Atos",
+                           "Azera",
+                           "Coupe",
+                           "Elantra",
+                           "Genesis",
+                           "Getz",
+                           "Grand i10",
+                           "H1",
+                           "H100",
+                           "i10",
+                           "i20",
+                           "i30",
+                           "i40",
+                           "iX35",
+                           "Kona",
+                           "Matrix",
+                           "Santa Fe",
+                           "Sonata",
+                           "Terracan",
+                           "Tucson",
+                           "Veloster",
+                           "Verna",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Infiniti",
+                        "value":[
+                           "EX",
+                           "FX",
+                           "G",
+                           "M",
+                           "Q30",
+                           "Q50",
+                           "Q60",
+                           "Q70",
+                           "QX30",
+                           "QX50",
+                           "QX60",
+                           "QX70",
+                           "QX80",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Isuzu",
+                        "value":[
+                           "D-Max",
+                           "MU-X",
+                           "NPR",
+                           "Rodeo",
+                           "Trooper",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Jaguar",
+                        "value":[
+                           "E-Pace",
+                           "F-Pace",
+                           "F-Type",
+                           "I-Pace",
+                           "XE",
+                           "XF",
+                           "XJ",
+                           "XJS",
+                           "XK",
+                           "X-Type",
+                           "S-Type",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Jeep",
+                        "value":[
+                           "Cherokee",
+                           "Commander",
+                           "Compass",
+                           "Grand Cherokee",
+                           "Liberty",
+                           "Patriot",
+                           "Renegade",
+                           "Wrangler",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Kia",
+                        "value":[
+                           "Carens",
+                           "Carnival",
+                           "Cerato",
+                           "cee'd",
+                           "Magentis",
+                           "Optima",
+                           "Picanto",
+                           "Pride",
+                           "Rio",
+                           "Sephia",
+                           "Sorento",
+                           "Soul",
+                           "Sportage",
+                           "Stinger",
+                           "Venga",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Land Rover",
+                        "value":[
+                           "Defender",
+                           "Discovery",
+                           "Discovery Sport",
+                           "Evoque",
+                           "Freelander",
+                           "Range Rover",
+                           "Range Rover Sport",
+                           "Range Rover Velar",
+                           "Range Rover Vogue",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Lexus",
+                        "value":[
+                           "CT",
+                           "ES",
+                           "GS",
+                           "GX",
+                           "IS",
+                           "LS",
+                           "LX",
+                           "NX",
+                           "RX",
+                           "SC",
+                           "UX",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Mazda",
+                        "value":[
+                           "2",
+                           "3",
+                           "5",
+                           "6",
+                           "323",
+                           "626",
+                           "929",
+                           "B-Series",
+                           "BT-50",
+                           "CX-3",
+                           "CX-5",
+                           "CX-7",
+                           "CX-9",
+                           "MPV",
+                           "MX-5",
+                           "Premacy",
+                           "RX-8",
+                           "Tribute",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Mercedes-Benz",
+                        "value":[
+                           "190",
+                           "A-Class",
+                           "B-Class",
+                           "C-Class",
+                           "CLA",
+                           "CLS",
+                           "E-Class",
+                           "G-Class",
+                           "GLA",
+                           "GLB",
+                           "GLC",
+                           "GLE",
+                           "GLS",
+                           "ML",
+                           "R-Class",
+                           "S-Class",
+                           "SL",
+                           "SLK",
+                           "Sprinter",
+                           "Vito",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Mini",
+                        "value":[
+                           "Clubman",
+                           "Countryman",
+                           "Cooper",
+                           "Paceman",
+                           "Roadster",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Mitsubishi",
+                        "value":[
+                           "3000GT",
+                           "ASX",
+                           "Attrage",
+                           "Carisma",
+                           "Colt",
+                           "Eclipse",
+                           "Galant",
+                           "Grandis",
+                           "L200",
+                           "Lancer",
+                           "Mirage",
+                           "Outlander",
+                           "Pajero",
+                           "Space Star",
+                           "Space Wagon",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Nissan",
+                        "value":[
+                           "350Z",
+                           "370Z",
+                           "Almera",
+                           "Altima",
+                           "Armada",
+                           "Juke",
+                           "Kicks",
+                           "Leaf",
+                           "Maxima",
+                           "Micra",
+                           "Murano",
+                           "Navara",
+                           "Note",
+                           "Pathfinder",
+                           "Patrol",
+                           "Pulsar",
+                           "Qashqai",
+                           "Quest",
+                           "Sentra",
+                           "Sunny",
+                           "Terrano",
+                           "Tiida",
+                           "X-Trail",
+                           "Xterra",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Opel",
+                        "value":[
+                           "Adam",
+                           "Antara",
+                           "Astra",
+                           "Combo",
+                           "Corsa",
+                           "Crossland",
+                           "Grandland",
+                           "Insignia",
+                           "Kadett",
+                           "Karl",
+                           "Meriva",
+                           "Mokka",
+                           "Omega",
+                           "Tigra",
+                           "Vectra",
+                           "Vivaro",
+                           "Zafira",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Peugeot",
+                        "value":[
+                           "106",
+                           "107",
+                           "108",
+                           "2008",
+                           "205",
+                           "206",
+                           "207",
+                           "208",
+                           "3008",
+                           "301",
+                           "306",
+                           "307",
+                           "308",
+                           "309",
+                           "405",
+                           "406",
+                           "407",
+                           "408",
+                           "5008",
+                           "504",
+                           "505",
+                           "508",
+                           "605",
+                           "607",
+                           "806",
+                           "807",
+                           "Bipper",
+                           "Boxer",
+                           "Expert",
+                           "Partner",
+                           "RCZ",
+                           "Rifter",
+                           "Traveller",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Porsche",
+                        "value":[
+                           "718",
+                           "911",
+                           "924",
+                           "928",
+                           "944",
+                           "968",
+                           "Boxster",
+                           "Cayenne",
+                           "Cayman",
+                           "Macan",
+                           "Panamera",
+                           "Taycan",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Renault",
+                        "value":[
+                           "4",
+                           "5",
+                           "9",
+                           "11",
+                           "12",
+                           "14",
+                           "18",
+                           "19",
+                           "21",
+                           "25",
+                           "Captur",
+                           "Clio",
+                           "Duster",
+                           "Espace",
+                           "Express",
+                           "Fluence",
+                           "Grand Scenic",
+                           "Kadjar",
+                           "Kangoo",
+                           "Koleos",
+                           "Kwid",
+                           "Laguna",
+                           "Logan",
+                           "Master",
+                           "Megane",
+                           "Modus",
+                           "Sandero",
+                           "Scenic",
+                           "Symbol",
+                           "Talisman",
+                           "Thalia",
+                           "Trafic",
+                           "Twingo",
+                           "Vel Satis",
+                           "Wind",
+                           "Zoe",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Seat",
+                        "value":[
+                           "Alhambra",
+                           "Altea",
+                           "Arona",
+                           "Ateca",
+                           "Cordoba",
+                           "Ibiza",
+                           "Leon",
+                           "Mii",
+                           "Tarraco",
+                           "Toledo",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Skoda",
+                        "value":[
+                           "Citigo",
+                           "Fabia",
+                           "Kamiq",
+                           "Karoq",
+                           "Kodiaq",
+                           "Octavia",
+                           "Rapid",
+                           "Roomster",
+                           "Scala",
+                           "Superb",
+                           "Yeti",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Subaru",
+                        "value":[
+                           "BRZ",
+                           "Forester",
+                           "Impreza",
+                           "Legacy",
+                           "Outback",
+                           "Tribeca",
+                           "WRX",
+                           "XV",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Suzuki",
+                        "value":[
+                           "Alto",
+                           "Baleno",
+                           "Celerio",
+                           "Grand Vitara",
+                           "Ignis",
+                           "Jimny",
+                           "Liana",
+                           "S-Cross",
+                           "SX4",
+                           "Swift",
+                           "Vitara",
+                           "Wagon R",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Toyota",
+                        "value":[
+                           "4Runner",
+                           "Agya",
+                           "Auris",
+                           "Avalon",
+                           "Avensis",
+                           "Aygo",
+                           "C-HR",
+                           "Camry",
+                           "Corolla",
+                           "Corona",
+                           "FJ Cruiser",
+                           "Fortuner",
+                           "Hilux",
+                           "Land Cruiser",
+                           "Matrix",
+                           "Prado",
+                           "Previa",
+                           "Prius",
+                           "RAV4",
+                           "Sequoia",
+                           "Sienna",
+                           "Starlet",
+                           "Supra",
+                           "Tacoma",
+                           "Tercios",
+                           "Tundra",
+                           "Urban Cruiser",
+                           "Verso",
+                           "Vios",
+                           "Yaris",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Volkswagen",
+                        "value":[
+                           "Arteon",
+                           "Atlas",
+                           "Beetle",
+                           "Bora",
+                           "Caddy",
+                           "CC",
+                           "Crafter",
+                           "EOS",
+                           "Golf",
+                           "Jetta",
+                           "Lupo",
+                           "Passat",
+                           "Polo",
+                           "Scirocco",
+                           "Sharan",
+                           "T-Cross",
+                           "T-Roc",
+                           "Tiguan",
+                           "Touareg",
+                           "Touran",
+                           "Transporter",
+                           "Up",
+                           "Vento",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Volvo",
+                        "value":[
+                           "240",
+                           "340",
+                           "360",
+                           "440",
+                           "460",
+                           "740",
+                           "760",
+                           "850",
+                           "940",
+                           "960",
+                           "C30",
+                           "C70",
+                           "S40",
+                           "S60",
+                           "S70",
+                           "S80",
+                           "S90",
+                           "V40",
+                           "V50",
+                           "V60",
+                           "V70",
+                           "V90",
+                           "XC40",
+                           "XC60",
+                           "XC70",
+                           "XC90",
+                           "Autre"
+                        ]
+                     },
+                     {
+                        "key":"Autre",
+                        "value":[
+                           "Autre"
+                        ]
+                     }
+                  ],
+                  "valueType":"nested selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Couleur",
+                  "value":null,
+                  "valueType":"color",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Kilométrage",
+                  "value":null,
+                  "valueType":"integer",
+                  "unit":"km",
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Boite",
+                  "value":[
+                     "Manuel",
+                     "Automatique"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Type de carburant",
+                  "value":[
+                     "Essence",
+                     "Diesel",
+                     "Hybride",
+                     "Hybride Diesel",
+                     "Hybride Essence",
+                     "Electrique"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Année de fabrication",
+                  "value":null,
+                  "valueType":"integer",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Motos & scooters",
+            "specificAttributes":[
+               {
+                  "key":"Kilométrage",
+                  "value":null,
+                  "valueType":"integer",
+                  "unit":"km",
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Couleur",
+                  "value":null,
+                  "valueType":"color",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Cylindrée Moto",
+                  "value":[
+                     "40",
+                     "50",
+                     "100",
+                     "125",
+                     "150",
+                     "200",
+                     "250",
+                     "300",
+                     "350",
+                     "400",
+                     "450",
+                     "500",
+                     "550",
+                     "600",
+                     "650",
+                     "700",
+                     "750",
+                     "800",
+                     "900",
+                     "1000",
+                     "1500",
+                     "2000",
+                     "2500",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Boite",
+                  "value":[
+                     "Manuel",
+                     "Automatique"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Année de fabrication",
+                  "value":null,
+                  "valueType":"integer",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Vélos & trottinettes",
+            "specificAttributes":[
+               {
+                  "key":"Type",
+                  "value":[
+                     "Vélo de ville",
+                     "VTT",
+                     "Trottinette manuelle",
+                     "Trottinette électrique"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Électrique",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "type":"Vente",
+      "nameCategory":"Informatique et Multimédia",
+      "commonAttributes":[
+         {
+            "key":"Localisation",
+            "value":null,
+            "valueType":"string",
+            "unit":null,
+            "required":true,
+            "filterable":true
+         },
+         {
+            "key":"État",
+            "value":[
+               "Neuf",
+               "Occasion",
+               "Reconditionné"
+            ],
+            "valueType":"list selection",
+            "unit":null,
+            "required":true,
+            "filterable":true
+         }
+      ],
+      "subCategory":[
+         {
+            "name":"Téléphones",
+            "specificAttributes":[
+               {
+                  "key":"Marque",
+                  "value":[
+                     "Apple",
+                     "Samsung",
+                     "Huawei",
+                     "Xiaomi",
+                     "Oppo",
+                     "Vivo",
+                     "OnePlus",
+                     "Google",
+                     "Sony",
+                     "LG",
+                     "Nokia",
+                     "Motorola",
+                     "Realme",
+                     "Honor",
+                     "Infinix",
+                     "Tecno",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Capacité de stockage",
+                  "value":[
+                     "16 GB",
+                     "32 GB",
+                     "64 GB",
+                     "128 GB",
+                     "256 GB",
+                     "512 GB",
+                     "1 TB"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"RAM",
+                  "value":[
+                     "2 GB",
+                     "3 GB",
+                     "4 GB",
+                     "6 GB",
+                     "8 GB",
+                     "12 GB",
+                     "16 GB"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Couleur",
+                  "value":null,
+                  "valueType":"color",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Ordinateurs et Laptops",
+            "specificAttributes":[
+               {
+                  "key":"Type",
+                  "value":[
+                     "Ordinateur portable",
+                     "Ordinateur de bureau",
+                     "Tablette",
+                     "2 en 1"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Marque",
+                  "value":[
+                     "HP",
+                     "Dell",
+                     "Lenovo",
+                     "Asus",
+                     "Acer",
+                     "Apple",
+                     "MSI",
+                     "Toshiba",
+                     "Samsung",
+                     "Microsoft",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Processeur",
+                  "value":[
+                     "Intel Core i3",
+                     "Intel Core i5",
+                     "Intel Core i7",
+                     "Intel Core i9",
+                     "AMD Ryzen 3",
+                     "AMD Ryzen 5",
+                     "AMD Ryzen 7",
+                     "AMD Ryzen 9",
+                     "Apple M1",
+                     "Apple M2",
+                     "Apple M3",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"RAM",
+                  "value":[
+                     "4 GB",
+                     "8 GB",
+                     "16 GB",
+                     "32 GB",
+                     "64 GB"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Stockage",
+                  "value":[
+                     "128 GB SSD",
+                     "256 GB SSD",
+                     "512 GB SSD",
+                     "1 TB SSD",
+                     "2 TB SSD",
+                     "500 GB HDD",
+                     "1 TB HDD",
+                     "2 TB HDD"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Taille d'écran",
+                  "value":null,
+                  "valueType":"float",
+                  "unit":"pouces",
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Accessoires informatiques et Gadgets",
+            "specificAttributes":[
+               {
+                  "key":"Type d'accessoire",
+                  "value":[
+                     "Souris",
+                     "Clavier",
+                     "Écran",
+                     "Imprimante",
+                     "Webcam",
+                     "Casque audio",
+                     "Haut-parleurs",
+                     "Chargeur",
+                     "Câble",
+                     "Disque dur externe",
+                     "Clé USB",
+                     "Carte mémoire",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Jeux vidéo et Consoles",
+            "specificAttributes":[
+               {
+                  "key":"Type",
+                  "value":[
+                     "Console",
+                     "Jeu vidéo",
+                     "Accessoire gaming",
+                     "PC Gaming"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Plateforme",
+                  "value":[
+                     "PlayStation 5",
+                     "PlayStation 4",
+                     "Xbox Series X/S",
+                     "Xbox One",
+                     "Nintendo Switch",
+                     "PC",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "type":"Vente",
+      "nameCategory":"Pour la Maison et Jardin",
+      "commonAttributes":[
+         {
+            "key":"Localisation",
+            "value":null,
+            "valueType":"string",
+            "unit":null,
+            "required":true,
+            "filterable":true
+         },
+         {
+            "key":"État",
+            "value":[
+               "Neuf",
+               "Occasion",
+               "Très bon état",
+               "Bon état",
+               "État correct"
+            ],
+            "valueType":"list selection",
+            "unit":null,
+            "required":true,
+            "filterable":true
+         }
+      ],
+      "subCategory":[
+         {
+            "name":"Électroménagers et Vaisselles",
+            "specificAttributes":[
+               {
+                  "key":"Type d'appareil",
+                  "value":[
+                     "Réfrigérateur",
+                     "Lave-linge",
+                     "Lave-vaisselle",
+                     "Four",
+                     "Micro-ondes",
+                     "Climatiseur",
+                     "Aspirateur",
+                     "Machine à café",
+                     "Grille-pain",
+                     "Mixeur",
+                     "Fer à repasser",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Marque",
+                  "value":[
+                     "Samsung",
+                     "LG",
+                     "Bosch",
+                     "Whirlpool",
+                     "Electrolux",
+                     "Siemens",
+                     "Beko",
+                     "Candy",
+                     "Haier",
+                     "Sharp",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Garantie",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Meubles et Décoration",
+            "specificAttributes":[
+               {
+                  "key":"Type de meuble",
+                  "value":[
+                     "Canapé",
+                     "Fauteuil",
+                     "Table",
+                     "Chaise",
+                     "Lit",
+                     "Armoire",
+                     "Commode",
+                     "Étagère",
+                     "Bureau",
+                     "Tapis",
+                     "Miroir",
+                     "Luminaire",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Matériau principal",
+                  "value":[
+                     "Bois",
+                     "Métal",
+                     "Plastique",
+                     "Verre",
+                     "Tissu",
+                     "Cuir",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Style",
+                  "value":[
+                     "Moderne",
+                     "Classique",
+                     "Scandinave",
+                     "Industriel",
+                     "Vintage",
+                     "Rustique",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Jardin et Extérieur",
+            "specificAttributes":[
+               {
+                  "key":"Type",
+                  "value":[
+                     "Plantes",
+                     "Outils de jardinage",
+                     "Mobilier de jardin",
+                     "Barbecue",
+                     "Piscine",
+                     "Éclairage extérieur",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Bricolage et Outils",
+            "specificAttributes":[
+               {
+                  "key":"Type d'outil",
+                  "value":[
+                     "Perceuse",
+                     "Scie",
+                     "Marteau",
+                     "Tournevis",
+                     "Clés",
+                     "Niveau",
+                     "Mètre",
+                     "Ponceuse",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Électrique",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "type":"Vente",
+      "nameCategory":"Habillement et Bien-Être",
+      "commonAttributes":[
+         {
+            "key":"Localisation",
+            "value":null,
+            "valueType":"string",
+            "unit":null,
+            "required":true,
+            "filterable":true
+         },
+         {
+            "key":"État",
+            "value":[
+               "Neuf avec étiquettes",
+               "Neuf sans étiquettes",
+               "Très bon état",
+               "Bon état",
+               "État correct"
+            ],
+            "valueType":"list selection",
+            "unit":null,
+            "required":true,
+            "filterable":true
+         }
+      ],
+      "subCategory":[
+         {
+            "name":"Vêtements Femme",
+            "specificAttributes":[
+               {
+                  "key":"Type de vêtement",
+                  "value":[
+                     "Robe",
+                     "Jupe",
+                     "Pantalon",
+                     "Jean",
+                     "Chemisier",
+                     "T-shirt",
+                     "Pull",
+                     "Veste",
+                     "Manteau",
+                     "Lingerie",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Taille",
+                  "value":[
+                     "XS",
+                     "S",
+                     "M",
+                     "L",
+                     "XL",
+                     "XXL",
+                     "34",
+                     "36",
+                     "38",
+                     "40",
+                     "42",
+                     "44",
+                     "46",
+                     "48",
+                     "50",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Couleur",
+                  "value":null,
+                  "valueType":"color",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Marque",
+                  "value":null,
+                  "valueType":"string",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Vêtements Homme",
+            "specificAttributes":[
+               {
+                  "key":"Type de vêtement",
+                  "value":[
+                     "Chemise",
+                     "T-shirt",
+                     "Polo",
+                     "Pantalon",
+                     "Jean",
+                     "Short",
+                     "Pull",
+                     "Veste",
+                     "Costume",
+                     "Manteau",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Taille",
+                  "value":[
+                     "XS",
+                     "S",
+                     "M",
+                     "L",
+                     "XL",
+                     "XXL",
+                     "38",
+                     "40",
+                     "42",
+                     "44",
+                     "46",
+                     "48",
+                     "50",
+                     "52",
+                     "54",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Couleur",
+                  "value":null,
+                  "valueType":"color",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Marque",
+                  "value":null,
+                  "valueType":"string",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Vêtements Enfant",
+            "specificAttributes":[
+               {
+                  "key":"Type de vêtement",
+                  "value":[
+                     "T-shirt",
+                     "Pantalon",
+                     "Robe",
+                     "Jupe",
+                     "Pull",
+                     "Veste",
+                     "Pyjama",
+                     "Body",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Âge",
+                  "value":[
+                     "0-3 mois",
+                     "3-6 mois",
+                     "6-9 mois",
+                     "9-12 mois",
+                     "12-18 mois",
+                     "18-24 mois",
+                     "2 ans",
+                     "3 ans",
+                     "4 ans",
+                     "5 ans",
+                     "6 ans",
+                     "7 ans",
+                     "8 ans",
+                     "9 ans",
+                     "10 ans",
+                     "11 ans",
+                     "12 ans",
+                     "13 ans",
+                     "14 ans",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Genre",
+                  "value":[
+                     "Fille",
+                     "Garçon",
+                     "Mixte"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Couleur",
+                  "value":null,
+                  "valueType":"color",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Chaussures",
+            "specificAttributes":[
+               {
+                  "key":"Type de chaussure",
+                  "value":[
+                     "Baskets",
+                     "Chaussures de ville",
+                     "Sandales",
+                     "Bottes",
+                     "Escarpins",
+                     "Chaussures de sport",
+                     "Ballerines",
+                     "Mocassins",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Pointure",
+                  "value":null,
+                  "valueType":"integer",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Genre",
+                  "value":[
+                     "Femme",
+                     "Homme",
+                     "Enfant",
+                     "Unisexe"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Couleur",
+                  "value":null,
+                  "valueType":"color",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Marque",
+                  "value":null,
+                  "valueType":"string",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Sacs et Accessoires",
+            "specificAttributes":[
+               {
+                  "key":"Type d'accessoire",
+                  "value":[
+                     "Sac à main",
+                     "Sac à dos",
+                     "Valise",
+                     "Portefeuille",
+                     "Ceinture",
+                     "Montre",
+                     "Bijoux",
+                     "Lunettes",
+                     "Chapeau",
+                     "Écharpe",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Genre",
+                  "value":[
+                     "Femme",
+                     "Homme",
+                     "Enfant",
+                     "Unisexe"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Couleur",
+                  "value":null,
+                  "valueType":"color",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Marque",
+                  "value":null,
+                  "valueType":"string",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Beauté et Soins",
+            "specificAttributes":[
+               {
+                  "key":"Type de produit",
+                  "value":[
+                     "Maquillage",
+                     "Soins visage",
+                     "Soins corps",
+                     "Parfum",
+                     "Soins cheveux",
+                     "Matériel de beauté",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Marque",
+                  "value":null,
+                  "valueType":"string",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Date d'expiration",
+                  "value":null,
+                  "valueType":"date",
+                  "unit":null,
+                  "required":false,
+                  "filterable":false
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "type":"Vente",
+      "nameCategory":"Sport et Loisirs",
+      "commonAttributes":[
+         {
+            "key":"Localisation",
+            "value":null,
+            "valueType":"string",
+            "unit":null,
+            "required":true,
+            "filterable":true
+         },
+         {
+            "key":"État",
+            "value":[
+               "Neuf",
+               "Très bon état",
+               "Bon état",
+               "État correct"
+            ],
+            "valueType":"list selection",
+            "unit":null,
+            "required":true,
+            "filterable":true
+         }
+      ],
+      "subCategory":[
+         {
+            "name":"Équipements de sport",
+            "specificAttributes":[
+               {
+                  "key":"Type de sport",
+                  "value":[
+                     "Football",
+                     "Basketball",
+                     "Tennis",
+                     "Natation",
+                     "Cyclisme",
+                     "Running",
+                     "Fitness",
+                     "Arts martiaux",
+                     "Sports d'hiver",
+                     "Sports nautiques",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Taille/Pointure",
+                  "value":null,
+                  "valueType":"string",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Instruments de musique",
+            "specificAttributes":[
+               {
+                  "key":"Type d'instrument",
+                  "value":[
+                     "Guitare",
+                     "Piano",
+                     "Violon",
+                     "Batterie",
+                     "Flûte",
+                     "Saxophone",
+                     "Trompette",
+                     "Basse",
+                     "Synthétiseur",
+                     "Accordéon",
+                     "Oud",
+                     "Derbouka",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Marque",
+                  "value":null,
+                  "valueType":"string",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Livres et Magazines",
+            "specificAttributes":[
+               {
+                  "key":"Type",
+                  "value":[
+                     "Roman",
+                     "Manuel scolaire",
+                     "Livre universitaire",
+                     "Bande dessinée",
+                     "Magazine",
+                     "Livre de cuisine",
+                     "Livre technique",
+                     "Livre religieux",
+                     "Poésie",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Langue",
+                  "value":[
+                     "Français",
+                     "Arabe",
+                     "Anglais",
+                     "Allemand",
+                     "Espagnol",
+                     "Italien",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Auteur",
+                  "value":null,
+                  "valueType":"string",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Jeux et Jouets",
+            "specificAttributes":[
+               {
+                  "key":"Âge recommandé",
+                  "value":[
+                     "0-2 ans",
+                     "3-5 ans",
+                     "6-8 ans",
+                     "9-12 ans",
+                     "13+ ans",
+                     "Adulte"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Type de jeu",
+                  "value":[
+                     "Jeu de société",
+                     "Puzzle",
+                     "Jouet éducatif",
+                     "Poupée",
+                     "Voiture miniature",
+                     "Jeu de construction",
+                     "Peluche",
+                     "Jeu électronique",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "type":"Location",
+      "nameCategory":"Services",
+      "commonAttributes":[
+         {
+            "key":"Localisation",
+            "value":null,
+            "valueType":"string",
+            "unit":null,
+            "required":true,
+            "filterable":true
+         },
+         {
+            "key":"Prix",
+            "value":null,
+            "valueType":"float",
+            "unit":"TND",
+            "required":false,
+            "filterable":true
+         }
+      ],
+      "subCategory":[
+         {
+            "name":"Services à domicile",
+            "specificAttributes":[
+               {
+                  "key":"Type de service",
+                  "value":[
+                     "Ménage",
+                     "Jardinage",
+                     "Plomberie",
+                     "Électricité",
+                     "Peinture",
+                     "Déménagement",
+                     "Livraison",
+                     "Garde d'enfants",
+                     "Cours particuliers",
+                     "Réparation",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Disponibilité",
+                  "value":[
+                     "Immédiate",
+                     "Dans la semaine",
+                     "Flexible",
+                     "Week-end uniquement",
+                     "Sur rendez-vous"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Cours et Formation",
+            "specificAttributes":[
+               {
+                  "key":"Matière/Domaine",
+                  "value":[
+                     "Mathématiques",
+                     "Physique",
+                     "Français",
+                     "Arabe",
+                     "Anglais",
+                     "Informatique",
+                     "Musique",
+                     "Cuisine",
+                     "Conduite",
+                     "Langues étrangères",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Niveau",
+                  "value":[
+                     "Débutant",
+                     "Intermédiaire",
+                     "Avancé",
+                     "Primaire",
+                     "Collège",
+                     "Lycée",
+                     "Universitaire",
+                     "Professionnel"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Mode de cours",
+                  "value":[
+                     "À domicile",
+                     "En ligne",
+                     "Dans un centre",
+                     "Groupe",
+                     "Individuel"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Événements et Animations",
+            "specificAttributes":[
+               {
+                  "key":"Type d'événement",
+                  "value":[
+                     "Mariage",
+                     "Anniversaire",
+                     "Conférence",
+                     "Formation",
+                     "Spectacle",
+                     "Animation enfants",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Capacité",
+                  "value":null,
+                  "valueType":"integer",
+                  "unit":"personnes",
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Services professionnels",
+            "specificAttributes":[
+               {
+                  "key":"Type de service",
+                  "value":[
+                     "Comptabilité",
+                     "Juridique",
+                     "Traduction",
+                     "Design graphique",
+                     "Développement web",
+                     "Marketing digital",
+                     "Photographie",
+                     "Architecture",
+                     "Consultation",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "type":"Vente",
+      "nameCategory":"Animaux",
+      "commonAttributes":[
+         {
+            "key":"Localisation",
+            "value":null,
+            "valueType":"string",
+            "unit":null,
+            "required":true,
+            "filterable":true
+         },
+         {
+            "key":"Âge",
+            "value":null,
+            "valueType":"string",
+            "unit":null,
+            "required":false,
+            "filterable":true
+         }
+      ],
+      "subCategory":[
+         {
+            "name":"Chiens",
+            "specificAttributes":[
+               {
+                  "key":"Race",
+                  "value":[
+                     "Berger Allemand",
+                     "Labrador",
+                     "Golden Retriever",
+                     "Bulldog",
+                     "Caniche",
+                     "Husky",
+                     "Rottweiler",
+                     "Chihuahua",
+                     "Yorkshire",
+                     "Boxer",
+                     "Croisé",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Sexe",
+                  "value":[
+                     "Mâle",
+                     "Femelle"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Vaccins à jour",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Pedigree",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Chats",
+            "specificAttributes":[
+               {
+                  "key":"Race",
+                  "value":[
+                     "Persan",
+                     "Siamois",
+                     "Maine Coon",
+                     "British Shorthair",
+                     "Ragdoll",
+                     "Bengale",
+                     "Européen",
+                     "Croisé",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Sexe",
+                  "value":[
+                     "Mâle",
+                     "Femelle"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Vaccins à jour",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Stérilisé",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Oiseaux",
+            "specificAttributes":[
+               {
+                  "key":"Type d'oiseau",
+                  "value":[
+                     "Canari",
+                     "Perroquet",
+                     "Perruche",
+                     "Tourterelle",
+                     "Pigeon",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Sexe",
+                  "value":[
+                     "Mâle",
+                     "Femelle",
+                     "Non déterminé"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Accessoires pour animaux",
+            "specificAttributes":[
+               {
+                  "key":"Type d'animal",
+                  "value":[
+                     "Chien",
+                     "Chat",
+                     "Oiseau",
+                     "Poisson",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Type d'accessoire",
+                  "value":[
+                     "Nourriture",
+                     "Jouet",
+                     "Laisse",
+                     "Collier",
+                     "Cage",
+                     "Aquarium",
+                     "Litière",
+                     "Médicament",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "type":"Vente",
+      "nameCategory":"Divers",
+      "commonAttributes":[
+         {
+            "key":"Localisation",
+            "value":null,
+            "valueType":"string",
+            "unit":null,
+            "required":true,
+            "filterable":true
+         },
+         {
+            "key":"État",
+            "value":[
+               "Neuf",
+               "Très bon état",
+               "Bon état",
+               "État correct"
+            ],
+            "valueType":"list selection",
+            "unit":null,
+            "required":true,
+            "filterable":true
+         }
+      ],
+      "subCategory":[
+         {
+            "name":"Bébé et Puériculture",
+            "specificAttributes":[
+               {
+                  "key":"Type d'article",
+                  "value":[
+                     "Poussette",
+                     "Siège auto",
+                     "Lit bébé",
+                     "Chaise haute",
+                     "Vêtements bébé",
+                     "Jouets bébé",
+                     "Biberon",
+                     "Couches",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Âge recommandé",
+                  "value":[
+                     "0-6 mois",
+                     "6-12 mois",
+                     "12-24 mois",
+                     "2-4 ans",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Collection et Antiquité",
+            "specificAttributes":[
+               {
+                  "key":"Type de collection",
+                  "value":[
+                     "Monnaies",
+                     "Timbres",
+                     "Cartes postales",
+                     "Livres anciens",
+                     "Objets d'art",
+                     "Bijoux anciens",
+                     "Meubles anciens",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Époque",
+                  "value":[
+                     "Avant 1900",
+                     "1900-1950",
+                     "1950-1980",
+                     "1980-2000",
+                     "Moderne",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Matériaux de Construction",
+            "specificAttributes":[
+               {
+                  "key":"Type de matériau",
+                  "value":[
+                     "Carrelage",
+                     "Sanitaire",
+                     "Peinture",
+                     "Portes",
+                     "Fenêtres",
+                     "Électricité",
+                     "Plomberie",
+                     "Isolation",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Quantité disponible",
+                  "value":null,
+                  "valueType":"string",
+                  "unit":null,
+                  "required":false,
+                  "filterable":false
+               }
+            ]
+         },
+         {
+            "name":"Autres",
+            "specificAttributes":[
+               {
+                  "key":"Catégorie spécifique",
+                  "value":null,
+                  "valueType":"string",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "type":"Location",
+      "nameCategory":"Immobilier & Terrains",
+      "commonAttributes":[
+         {
+            "key":"Superficie",
+            "value":null,
+            "valueType":"integer",
+            "unit":"m²",
+            "required":true,
+            "filterable":true
+         },
+         {
+            "key":"Prix de location",
+            "value":null,
+            "valueType":"integer",
+            "unit":"TND",
+            "required":true,
+            "filterable":true
+         },
+         {
+            "key":"Durée de location",
+            "value":[
+               "Journalière",
+               "Hebdomadaire",
+               "Mensuelle",
+               "Annuelle",
+               "Longue durée"
+            ],
+            "valueType":"list selection",
+            "unit":null,
+            "required":true,
+            "filterable":true
+         }
+      ],
+      "subCategory":[
+         {
+            "name":"Maisons et Villas",
+            "specificAttributes":[
+               {
+                  "key":"État du bien",
+                  "value":[
+                     "Neuf",
+                     "Très bon état",
+                     "Bon état",
+                     "À rénover"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Nombre de chambres",
+                  "value":null,
+                  "valueType":"integer",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Nombre de salles de bain",
+                  "value":null,
+                  "valueType":"integer",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Meublé",
+                  "value":[
+                     "Meublé",
+                     "Semi-meublé",
+                     "Vide"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Jardin",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Piscine",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Garage/Parking",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Appartements",
+            "specificAttributes":[
+               {
+                  "key":"État du bien",
+                  "value":[
+                     "Neuf",
+                     "Très bon état",
+                     "Bon état",
+                     "À rénover"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Nombre de chambres",
+                  "value":null,
+                  "valueType":"integer",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Nombre de salles de bain",
+                  "value":null,
+                  "valueType":"integer",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Étage",
+                  "value":null,
+                  "valueType":"integer",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Ascenseur",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Balcon",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Meublé",
+                  "value":[
+                     "Meublé",
+                     "Semi-meublé",
+                     "Vide"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Parking",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Locaux Professionnels",
+            "specificAttributes":[
+               {
+                  "key":"Type de local",
+                  "value":[
+                     "Magasin",
+                     "Bureau",
+                     "Entrepôt",
+                     "Locaux Industriels",
+                     "Atelier",
+                     "Show-room",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Nombre de bureaux",
+                  "value":null,
+                  "valueType":"integer",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Nombre de salles de bain",
+                  "value":null,
+                  "valueType":"integer",
+                  "unit":null,
+                  "required":false,
+                  "filterable":false
+               },
+               {
+                  "key":"Climatisé",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Vitrine",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Chambres et Colocations",
+            "specificAttributes":[
+               {
+                  "key":"Type de logement",
+                  "value":[
+                     "Chambre individuelle",
+                     "Chambre partagée",
+                     "Studio",
+                     "Colocation"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Genre préféré",
+                  "value":[
+                     "Homme",
+                     "Femme",
+                     "Mixte"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Meublé",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Cuisine commune",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Salle de bain privée",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Locations Saisonnières",
+            "specificAttributes":[
+               {
+                  "key":"Type de propriété",
+                  "value":[
+                     "Appartement",
+                     "Villa",
+                     "Chalet",
+                     "Riad",
+                     "Maison d'hôtes"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Capacité d'accueil",
+                  "value":null,
+                  "valueType":"integer",
+                  "unit":"personnes",
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Vue",
+                  "value":[
+                     "Vue mer",
+                     "Vue montagne",
+                     "Vue jardin",
+                     "Vue ville",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Services inclus",
+                  "value":[
+                     "Petit-déjeuner",
+                     "Ménage",
+                     "Linge de maison",
+                     "WiFi",
+                     "Climatisation",
+                     "Piscine",
+                     "Parking"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "type":"Location",
+      "nameCategory":"Véhicules & Transport",
+      "commonAttributes":[
+         {
+            "key":"Localisation",
+            "value":null,
+            "valueType":"string",
+            "unit":null,
+            "required":true,
+            "filterable":true
+         },
+         {
+            "key":"Prix de location",
+            "value":null,
+            "valueType":"integer",
+            "unit":"TND",
+            "required":true,
+            "filterable":true
+         },
+         {
+            "key":"Durée de location",
+            "value":[
+               "Journalière",
+               "Hebdomadaire",
+               "Mensuelle",
+               "Longue durée"
+            ],
+            "valueType":"list selection",
+            "unit":null,
+            "required":true,
+            "filterable":true
+         }
+      ],
+      "subCategory":[
+         {
+            "name":"Voitures",
+            "specificAttributes":[
+               {
+                  "key":"Marque",
+                  "value":[
+                     "Renault",
+                     "Peugeot",
+                     "Citroën",
+                     "Volkswagen",
+                     "BMW",
+                     "Mercedes-Benz",
+                     "Audi",
+                     "Toyota",
+                     "Hyundai",
+                     "Kia",
+                     "Nissan",
+                     "Ford",
+                     "Fiat",
+                     "Dacia",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Modèle",
+                  "value":null,
+                  "valueType":"string",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Année",
+                  "value":null,
+                  "valueType":"integer",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Type de carburant",
+                  "value":[
+                     "Essence",
+                     "Diesel",
+                     "Hybride",
+                     "Électrique"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Boite de vitesse",
+                  "value":[
+                     "Manuelle",
+                     "Automatique"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Nombre de places",
+                  "value":[
+                     "2",
+                     "4",
+                     "5",
+                     "7",
+                     "9"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Climatisation",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"GPS",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Assurance incluse",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Motos & Scooters",
+            "specificAttributes":[
+               {
+                  "key":"Type",
+                  "value":[
+                     "Scooter",
+                     "Moto sportive",
+                     "Moto de route",
+                     "Moto cross",
+                     "Quad"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Cylindrée",
+                  "value":[
+                     "50cc",
+                     "125cc",
+                     "250cc",
+                     "400cc",
+                     "600cc",
+                     "750cc",
+                     "1000cc+"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Casque inclus",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Assurance incluse",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Vélos & Trottinettes",
+            "specificAttributes":[
+               {
+                  "key":"Type",
+                  "value":[
+                     "Vélo de ville",
+                     "VTT",
+                     "Vélo électrique",
+                     "Trottinette électrique",
+                     "Trottinette manuelle"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Électrique",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Casque inclus",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Antivol inclus",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Camions & Utilitaires",
+            "specificAttributes":[
+               {
+                  "key":"Type de véhicule",
+                  "value":[
+                     "Camionnette",
+                     "Fourgon",
+                     "Camion",
+                     "Remorque"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Capacité de charge",
+                  "value":null,
+                  "valueType":"integer",
+                  "unit":"kg",
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Volume de chargement",
+                  "value":null,
+                  "valueType":"float",
+                  "unit":"m³",
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Permis requis",
+                  "value":[
+                     "Permis B",
+                     "Permis C",
+                     "Permis C1",
+                     "Permis BE"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "type":"Location",
+      "nameCategory":"Matériel et Équipements",
+      "commonAttributes":[
+         {
+            "key":"Localisation",
+            "value":null,
+            "valueType":"string",
+            "unit":null,
+            "required":true,
+            "filterable":true
+         },
+         {
+            "key":"Prix de location",
+            "value":null,
+            "valueType":"integer",
+            "unit":"TND",
+            "required":true,
+            "filterable":true
+         },
+         {
+            "key":"Durée de location",
+            "value":[
+               "Journalière",
+               "Hebdomadaire",
+               "Mensuelle"
+            ],
+            "valueType":"list selection",
+            "unit":null,
+            "required":true,
+            "filterable":true
+         }
+      ],
+      "subCategory":[
+         {
+            "name":"Matériel de Construction",
+            "specificAttributes":[
+               {
+                  "key":"Type d'équipement",
+                  "value":[
+                     "Échafaudage",
+                     "Bétonnière",
+                     "Compresseur",
+                     "Marteau-piqueur",
+                     "Grue",
+                     "Pelleteuse",
+                     "Groupe électrogène",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"État",
+                  "value":[
+                     "Neuf",
+                     "Très bon état",
+                     "Bon état"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Livraison possible",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Matériel Électroménager",
+            "specificAttributes":[
+               {
+                  "key":"Type d'appareil",
+                  "value":[
+                     "Réfrigérateur",
+                     "Lave-linge",
+                     "Lave-vaisselle",
+                     "Four",
+                     "Micro-ondes",
+                     "Climatiseur",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Marque",
+                  "value":null,
+                  "valueType":"string",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"État",
+                  "value":[
+                     "Neuf",
+                     "Très bon état",
+                     "Bon état"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Matériel Informatique",
+            "specificAttributes":[
+               {
+                  "key":"Type d'équipement",
+                  "value":[
+                     "Ordinateur portable",
+                     "Ordinateur de bureau",
+                     "Écran",
+                     "Projecteur",
+                     "Imprimante",
+                     "Serveur",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Configuration",
+                  "value":null,
+                  "valueType":"string",
+                  "unit":null,
+                  "required":false,
+                  "filterable":false
+               },
+               {
+                  "key":"Logiciels inclus",
+                  "value":null,
+                  "valueType":"string",
+                  "unit":null,
+                  "required":false,
+                  "filterable":false
+               }
+            ]
+         },
+         {
+            "name":"Matériel Audio/Visuel",
+            "specificAttributes":[
+               {
+                  "key":"Type d'équipement",
+                  "value":[
+                     "Système de son",
+                     "Microphone",
+                     "Projecteur",
+                     "Écran de projection",
+                     "Éclairage",
+                     "Caméra",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Usage recommandé",
+                  "value":[
+                     "Événement privé",
+                     "Conférence",
+                     "Mariage",
+                     "Concert",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Installation incluse",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Matériel de Jardinage",
+            "specificAttributes":[
+               {
+                  "key":"Type d'outil",
+                  "value":[
+                     "Tondeuse",
+                     "Taille-haie",
+                     "Tronçonneuse",
+                     "Souffleur",
+                     "Motoculteur",
+                     "Nettoyeur haute pression",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Type de motorisation",
+                  "value":[
+                     "Électrique",
+                     "Thermique",
+                     "Batterie",
+                     "Manuel"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "type":"Location",
+      "nameCategory":"Événementiel & Réception",
+      "commonAttributes":[
+         {
+            "key":"Localisation",
+            "value":null,
+            "valueType":"string",
+            "unit":null,
+            "required":true,
+            "filterable":true
+         },
+         {
+            "key":"Prix de location",
+            "value":null,
+            "valueType":"integer",
+            "unit":"TND",
+            "required":true,
+            "filterable":true
+         },
+         {
+            "key":"Durée de location",
+            "value":[
+               "Journalière",
+               "Weekend",
+               "Semaine",
+               "Sur mesure"
+            ],
+            "valueType":"list selection",
+            "unit":null,
+            "required":true,
+            "filterable":true
+         }
+      ],
+      "subCategory":[
+         {
+            "name":"Salles de Réception",
+            "specificAttributes":[
+               {
+                  "key":"Type de salle",
+                  "value":[
+                     "Salle de mariage",
+                     "Salle de conférence",
+                     "Salle de fête",
+                     "Restaurant",
+                     "Jardin",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Capacité",
+                  "value":null,
+                  "valueType":"integer",
+                  "unit":"personnes",
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Services inclus",
+                  "value":[
+                     "Traiteur",
+                     "Décoration",
+                     "Service",
+                     "Sonorisation",
+                     "Éclairage",
+                     "Parking"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               },
+               {
+                  "key":"Climatisation",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Matériel de Réception",
+            "specificAttributes":[
+               {
+                  "key":"Type de matériel",
+                  "value":[
+                     "Tables",
+                     "Chaises",
+                     "Nappes",
+                     "Vaisselle",
+                     "Tente",
+                     "Parasol",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Quantité disponible",
+                  "value":null,
+                  "valueType":"integer",
+                  "unit":null,
+                  "required":false,
+                  "filterable":false
+               },
+               {
+                  "key":"Livraison incluse",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         },
+         {
+            "name":"Costumes & Déguisements",
+            "specificAttributes":[
+               {
+                  "key":"Type de costume",
+                  "value":[
+                     "Costume traditionnel",
+                     "Robe de soirée",
+                     "Smoking",
+                     "Déguisement",
+                     "Costume de scène",
+                     "Autre"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Taille disponible",
+                  "value":[
+                     "XS",
+                     "S",
+                     "M",
+                     "L",
+                     "XL",
+                     "XXL",
+                     "Plusieurs tailles"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Genre",
+                  "value":[
+                     "Homme",
+                     "Femme",
+                     "Enfant",
+                     "Unisexe"
+                  ],
+                  "valueType":"list selection",
+                  "unit":null,
+                  "required":true,
+                  "filterable":true
+               },
+               {
+                  "key":"Nettoyage inclus",
+                  "value":null,
+                  "valueType":"boolean",
+                  "unit":null,
+                  "required":false,
+                  "filterable":true
+               }
+            ]
+         }
+      ]
+   }
+]

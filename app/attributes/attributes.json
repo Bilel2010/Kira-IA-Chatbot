@@ -1,0 +1,13 @@
+{
+  "voitures": [
+    { "field": "marque", "question": "Quelle est la marque de la voiture ?" },
+    { "field": "modele", "question": "Quel est le modèle de la voiture ?" },
+    { "field": "annee", "question": "Quelle est l'année de mise en circulation ?" },
+    { "field": "kilometrage", "question": "Quel est le kilométrage ?" },
+    { "field": "carburant", "question": "Quel est le type de carburant ?", "options": ["Essence", "Diesel", "Hybride", "Électrique"] },
+    { "field": "boite", "question": "Quel est le type de boîte de vitesses ?", "options": ["Manuelle", "Automatique"] },
+    { "field": "couleur", "question": "Quelle est la couleur de la voiture ?" }
+  ]
+}
+
+

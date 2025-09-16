@@ -4,26 +4,27 @@
   "meta": {
     "category_id": "vehicules-transport",
     "subcategory_id": "voitures",
-    "version": "1.0.1"
+    "version": "1.0.2"
   },
   "states": {
-   "q_locale": {
-  "type": "prompt",
-  "message": "Please choose your language / Veuillez choisir votre langue",
-  "options": ["Français", "English"],
-  "on_reply": {
-    "Français": "assist_opt_in",
-    "English": "assist_opt_in"
-  },
-  "effects": [
-    { "set": { "locale": "{{user_choice}}" } }
-  ]
-}
-,
+    "q_locale": {
+      "type": "prompt",
+      "message_en": "Please choose your language",
+      "message_fr": "Veuillez choisir votre langue",
+      "options": ["Français", "English"],
+      "on_reply": {
+        "Français": "assist_opt_in",
+        "English": "assist_opt_in"
+      },
+      "effects": [
+        { "set": { "locale": "{{user_choice}}" } }
+      ]
+    },
 
     "assist_opt_in": {
       "type": "prompt",
-      "message": "{{locale == 'English' ? 'Hello! I am KIRA, your AI assistant. Would you like me to help you fill your ad step by step?' : 'Bonjour ! Je suis KIRA, votre assistant IA. Voulez-vous que je vous aide à remplir votre annonce pas à pas ?'}}",
+      "message_en": "Hello! I am KIRA, your AI assistant. Would you like me to help you fill your ad step by step?",
+      "message_fr": "Bonjour ! Je suis KIRA, votre assistant IA. Voulez-vous que je vous aide à remplir votre annonce pas à pas ?",
       "options_fr": ["Oui", "Non"],
       "options_en": ["Yes", "No"],
       "on_reply": {
@@ -36,7 +37,8 @@
 
     "handoff_gui": {
       "type": "terminal",
-      "message": "{{locale == 'English' ? 'Okay 👍 You can fill the fields in the interface. I remain available if needed.' : 'D’accord 👍 Vous pouvez remplir les champs dans l’interface. Je reste disponible si besoin.'}}",
+      "message_en": "Okay 👍 You can fill the fields in the interface. I remain available if needed.",
+      "message_fr": "D’accord 👍 Vous pouvez remplir les champs dans l’interface. Je reste disponible si besoin.",
       "effects": [
         { "set": { "flow_state": "gui_mode" } }
       ]
@@ -45,7 +47,8 @@
     "q_marque": {
       "type": "question",
       "attribute": "marque",
-      "label": "{{locale == 'English' ? 'What is your car brand?' : 'Quelle est la marque de votre voiture ?'}}",
+      "label_en": "What is your car brand?",
+      "label_fr": "Quelle est la marque de votre voiture ?",
       "input": {
         "type": "enum",
         "options": ["Renault", "Peugeot", "Citroën", "Volkswagen", "Toyota", "BMW", "Mercedes", "Audi", "Dacia", "Autre"]
@@ -58,7 +61,8 @@
     "q_modele": {
       "type": "question",
       "attribute": "modele",
-      "label": "{{locale == 'English' ? 'Which model? (e.g., Clio, 208, Golf)' : 'Quel est le modèle ? (ex: Clio, 208, Golf)'}}",
+      "label_en": "Which model? (e.g., Clio, 208, Golf)",
+      "label_fr": "Quel est le modèle ? (ex: Clio, 208, Golf)",
       "input": { "type": "text" },
       "validation": { "required": true, "min_len": 1 },
       "on_valid": "q_annee",
@@ -68,7 +72,8 @@
     "q_annee": {
       "type": "question",
       "attribute": "annee",
-      "label": "{{locale == 'English' ? 'What is the manufacturing year?' : 'Quelle est l’année de fabrication ?'}}",
+      "label_en": "What is the manufacturing year?",
+      "label_fr": "Quelle est l’année de fabrication ?",
       "input": { "type": "int" },
       "validation": { "required": true, "min": 1980, "max": 2025 },
       "on_valid": "q_km",
@@ -78,7 +83,8 @@
     "q_km": {
       "type": "question",
       "attribute": "kilometrage",
-      "label": "{{locale == 'English' ? 'Mileage (in km)?' : 'Quel est le kilométrage (en km) ?'}}",
+      "label_en": "Mileage (in km)?",
+      "label_fr": "Quel est le kilométrage (en km) ?",
       "input": { "type": "int" },
       "validation": { "required": true, "min": 0, "max": 1000000 },
       "on_valid": "q_carburant",
@@ -86,75 +92,76 @@
     },
 
     "q_carburant": {
-  "type": "question",
-  "attribute": "carburant",
-  "label": "{{locale == 'English' ? 'Fuel type?' : 'Quel est le type de carburant ?'}}",
-  "input": {
-    "type": "enum",
-    "options": ["Essence", "Diesel", "Hybride", "Électrique", "Autre"],
-    "options_en": ["Gasoline", "Diesel", "Hybrid", "Electric", "Other"],
-    "enum_map_en": {
-      "gasoline": "Essence",
-      "diesel": "Diesel",
-      "hybrid": "Hybride",
-      "electric": "Électrique",
-      "other": "Autre"
-    }
-  },
-  "validation": { "required": true },
-  "on_valid": "q_boite",
-  "on_invalid": "q_carburant"
-}
-,
+      "type": "question",
+      "attribute": "carburant",
+      "label_en": "Fuel type?",
+      "label_fr": "Quel est le type de carburant ?",
+      "input": {
+        "type": "enum",
+        "options": ["Essence", "Diesel", "Hybride", "Électrique", "Autre"],
+        "options_en": ["Gasoline", "Diesel", "Hybrid", "Electric", "Other"],
+        "enum_map_en": {
+          "gasoline": "Essence",
+          "diesel": "Diesel",
+          "hybrid": "Hybride",
+          "electric": "Électrique",
+          "other": "Autre"
+        }
+      },
+      "validation": { "required": true },
+      "on_valid": "q_boite",
+      "on_invalid": "q_carburant"
+    },
 
     "q_boite": {
-  "type": "question",
-  "attribute": "boite",
-  "label": "{{locale == 'English' ? 'Gearbox?' : 'Boîte de vitesses ?'}}",
-  "input": {
-    "type": "enum",
-    "options": ["Manuelle", "Automatique"],
-    "options_en": ["Manual", "Automatic"],
-    "enum_map_en": {
-      "manual": "Manuelle",
-      "automatic": "Automatique"
-    }
-  },
-  "validation": { "required": true },
-  "on_valid": "q_couleur",
-  "on_invalid": "q_boite"
-}
-,
+      "type": "question",
+      "attribute": "boite",
+      "label_en": "Gearbox?",
+      "label_fr": "Boîte de vitesses ?",
+      "input": {
+        "type": "enum",
+        "options": ["Manuelle", "Automatique"],
+        "options_en": ["Manual", "Automatic"],
+        "enum_map_en": {
+          "manual": "Manuelle",
+          "automatic": "Automatique"
+        }
+      },
+      "validation": { "required": true },
+      "on_valid": "q_couleur",
+      "on_invalid": "q_boite"
+    },
 
     "q_couleur": {
       "type": "question",
       "attribute": "couleur",
-      "label": "{{locale == 'English' ? 'Color?' : 'Quelle est la couleur ?'}}",
+      "label_en": "Color?",
+      "label_fr": "Quelle est la couleur ?",
       "input": { "type": "text" },
       "validation": { "required": true, "min_len": 2 },
       "on_valid": "recap_optional",
       "on_invalid": "q_couleur"
     },
 
-   "recap_optional": {
-  "type": "prompt",
-  "message": "{{ locale == 'English' ? 'Recap: {{marque}} {{modele}}, {{annee}}, {{kilometrage}} km, {{carburant}}, {{boite}}, color {{couleur}}. Would you like to add more info (condition, options, owners...)?' : 'Récapitulatif : {{marque}} {{modele}}, {{annee}}, {{kilometrage}} km, {{carburant}}, boîte {{boite}}, couleur {{couleur}}. Souhaitez-vous ajouter d’autres informations (état, options, nombre de propriétaires…) ?' }}",
-  "options_fr": ["Oui", "Non"],
-  "options_en": ["Yes", "No"],
-  "on_reply": {
-    "Oui": "q_additional",
-    "Yes": "q_additional",
-    "Non": "ask_price_user",
-    "No": "ask_price_user"
-  }
-}
-
-,
+    "recap_optional": {
+      "type": "prompt",
+      "message_en": "Recap — {{marque}} {{modele}}, {{annee}}, {{kilometrage}} km, {{carburant}}, {{boite}}, color {{couleur}}. Would you like to add more info (condition, options, owners...)?",
+      "message_fr": "Récapitulatif — {{marque}} {{modele}}, {{annee}}, {{kilometrage}} km, {{carburant}}, boîte {{boite}}, couleur {{couleur}}. Souhaitez-vous ajouter d’autres informations (état, options, nombre de propriétaires…) ?",
+      "options_fr": ["Oui", "Non"],
+      "options_en": ["Yes", "No"],
+      "on_reply": {
+        "Oui": "q_additional",
+        "Yes": "q_additional",
+        "Non": "ask_price_user",
+        "No": "ask_price_user"
+      }
+    },
 
     "q_additional": {
       "type": "question",
       "attribute": "infos_supplementaires",
-      "label": "{{locale == 'English' ? 'Add extra info (condition, options, service history...)' : 'Ajoutez des informations complémentaires (état, options, historique entretien…)'}}",
+      "label_en": "Add extra info (condition, options, service history...)",
+      "label_fr": "Ajoutez des informations complémentaires (état, options, historique entretien…)",
       "input": { "type": "text" },
       "validation": { "required": false },
       "on_valid": "ask_price_user",
@@ -163,7 +170,8 @@
 
     "ask_price_user": {
       "type": "prompt",
-      "message": "{{locale == 'English' ? 'Do you have a price in mind?' : 'Avez-vous un prix en tête ?'}}",
+      "message_en": "Do you have a price in mind?",
+      "message_fr": "Avez-vous un prix en tête ?",
       "options_fr": ["Oui", "Non"],
       "options_en": ["Yes", "No"],
       "on_reply": {
@@ -177,7 +185,8 @@
     "q_price_value": {
       "type": "question",
       "attribute": "price_user",
-      "label": "{{locale == 'English' ? 'What is your price? (just the number)' : 'Quel est votre prix ? (juste le nombre)'}}",
+      "label_en": "What is your price? (just the number)",
+      "label_fr": "Quel est votre prix ? (juste le nombre)",
       "input": { "type": "int" },
       "validation": { "required": true, "min": 100, "max": 1000000 },
       "on_valid": "ask_price_suggest",
@@ -186,7 +195,8 @@
 
     "ask_price_suggest": {
       "type": "prompt",
-      "message": "{{locale == 'English' ? 'Would you like a suggested price based on your info?' : 'Souhaitez-vous une suggestion de prix basée sur vos informations ?'}}",
+      "message_en": "Would you like a suggested price based on your info?",
+      "message_fr": "Souhaitez-vous une suggestion de prix basée sur vos informations ?",
       "options_fr": ["Oui", "Non"],
       "options_en": ["Yes", "No"],
       "on_reply": {
@@ -199,29 +209,29 @@
 
     "pricing_call": {
       "type": "action",
-      "message": "{{locale == 'English' ? 'Getting a suggested price…' : 'Je calcule une suggestion de prix…'}}",
+      "message_en": "Getting a suggested price…",
+      "message_fr": "Je calcule une suggestion de prix…",
       "effects": [
         { "call": "pricing.estimate" }
       ],
       "on_complete": "pricing_post"
     },
 
-   "pricing_post": {
-  "type": "prompt",
-  "message": "{{ price_suggested ? (locale == 'English' ? 'Your price: {{price_user || \"n/a\"}} | Suggested: {{price_suggested}} (confidence {{pricing_confidence}}). Would you like to keep your price or apply the suggestion?' : 'Votre prix : {{price_user || \"n/a\"}} | Suggestion : {{price_suggested}} (confiance {{pricing_confidence}}). Souhaitez-vous garder votre prix ou appliquer la suggestion ?') : (locale == 'English' ? 'No suggestion available. Shall we continue?' : 'Aucune suggestion disponible. On continue ?') }}",
-  "options_fr": ["Garder mon prix", "Appliquer la suggestion", "Continuer"],
-  "options_en": ["Keep mine", "Apply suggestion", "Continue"],
-  "on_reply": {
-    "Garder mon prix": "ask_title_gen",
-    "Keep mine": "ask_title_gen",
-    "Appliquer la suggestion": "apply_price_suggest",
-    "Apply suggestion": "apply_price_suggest",
-    "Continuer": "ask_title_gen",
-    "Continue": "ask_title_gen"
-  }
-}
-
-,
+    "pricing_post": {
+      "type": "prompt",
+      "message_en": "{{ price_suggested ? 'Your price ' + '' + ' ' + price_user + ' • Suggested ' + price_suggested + ' (confidence ' + pricing_confidence + '). Would you like to keep your price or apply the suggestion?' : 'No suggestion available. Shall we continue?' }}",
+      "message_fr": "{{ price_suggested ? 'Votre prix ' + '' + ' ' + price_user + ' • Suggestion ' + price_suggested + ' (confiance ' + pricing_confidence + '). Souhaitez-vous garder votre prix ou appliquer la suggestion ?' : 'Aucune suggestion disponible. On continue ?' }}",
+      "options_fr": ["Garder mon prix", "Appliquer la suggestion", "Continuer"],
+      "options_en": ["Keep mine", "Apply suggestion", "Continue"],
+      "on_reply": {
+        "Garder mon prix": "ask_title_gen",
+        "Keep mine": "ask_title_gen",
+        "Appliquer la suggestion": "apply_price_suggest",
+        "Apply suggestion": "apply_price_suggest",
+        "Continuer": "ask_title_gen",
+        "Continue": "ask_title_gen"
+      }
+    },
 
     "apply_price_suggest": {
       "type": "action",
@@ -233,7 +243,8 @@
 
     "ask_title_gen": {
       "type": "prompt",
-      "message": "{{locale == 'English' ? 'Would you like me to generate an attractive title?' : 'Souhaitez-vous que je génère un titre attractif ?'}}",
+      "message_en": "Would you like me to generate an attractive title?",
+      "message_fr": "Souhaitez-vous que je génère un titre attractif ?",
       "options_fr": ["Oui", "Non"],
       "options_en": ["Yes", "No"],
       "on_reply": {
@@ -246,7 +257,8 @@
 
     "gen_title": {
       "type": "action",
-      "message": "{{locale == 'English' ? 'Generating title…' : 'Je génère un titre…'}}",
+      "message_en": "Generating title…",
+      "message_fr": "Je génère un titre…",
       "effects": [
         { "call": "generation.title" }
       ],
@@ -255,7 +267,8 @@
 
     "title_feedback": {
       "type": "prompt",
-      "message": "{{locale == 'English' ? 'Title proposal: « {{generated_title}} ». Validate or modify?' : 'Proposition de titre : « {{generated_title}} ». Valider ou modifier ?'}}",
+      "message_en": "Title proposal « {{generated_title}} ». Validate or modify?",
+      "message_fr": "Proposition de titre « {{generated_title}} ». Valider ou modifier ?",
       "options_fr": ["Valider", "Modifier"],
       "options_en": ["Validate", "Modify"],
       "on_reply": {
@@ -270,7 +283,8 @@
     "title_rewrite": {
       "type": "question",
       "attribute": "title_feedback",
-      "label": "{{locale == 'English' ? 'What would you like to change? (shorter, mention color, etc.)' : 'Que voulez-vous changer ? (plus court, mentionner la couleur, etc.)'}}",
+      "label_en": "What would you like to change? (shorter, mention color, etc.)",
+      "label_fr": "Que voulez-vous changer ? (plus court, mentionner la couleur, etc.)",
       "input": { "type": "text" },
       "validation": { "required": true },
       "effects": [
@@ -283,35 +297,34 @@
       ]
     },
 
+    "skip_title": {
+      "type": "action",
+      "message_en": "Okay, skipping the title.",
+      "message_fr": "D’accord, on passe le titre.",
+      "effects": [
+        { "set": { "notice": "{{ locale == 'English' ? 'Okay, skipping the title. ' : 'D’accord, on passe le titre. ' }}" } }
+      ],
+      "on_complete": "ask_desc_gen"
+    },
 
-"skip_title": {
-  "type": "action",
-  "message": "{{ locale == 'English' ? 'Okay, skipping the title.' : 'D’accord, on passe le titre.' }}",
-  "effects": [
-    { "set": { "notice": "{{ locale == 'English' ? 'Okay, skipping the title. ' : 'D’accord, on passe le titre. ' }}" } }
-  ],
-  "on_complete": "ask_desc_gen"
-},
-
-"ask_desc_gen": {
-  "type": "prompt",
-  "message": "{{ (notice || '') + (locale == 'English' ? 'Generate a detailed description?' : 'Générer une description détaillée ?') }}",
-  "options_fr": ["Oui", "Non"],
-  "options_en": ["Yes", "No"],
-  "on_reply": {
-    "Oui": "gen_desc",
-    "Yes": "gen_desc",
-    "Non": "media_stub",
-    "No": "media_stub"
-  }
-}
-
-
-,
+    "ask_desc_gen": {
+      "type": "prompt",
+      "message_en": "{{notice}}Generate a detailed description?",
+      "message_fr": "{{notice}}Générer une description détaillée ?",
+      "options_fr": ["Oui", "Non"],
+      "options_en": ["Yes", "No"],
+      "on_reply": {
+        "Oui": "gen_desc",
+        "Yes": "gen_desc",
+        "Non": "media_stub",
+        "No": "media_stub"
+      }
+    },
 
     "gen_desc": {
       "type": "action",
-      "message": "{{locale == 'English' ? 'Generating description…' : 'Je génère une description…'}}",
+      "message_en": "Generating description…",
+      "message_fr": "Je génère une description…",
       "effects": [
         { "call": "generation.description" }
       ],
@@ -320,7 +333,8 @@
 
     "desc_feedback": {
       "type": "prompt",
-      "message": "{{locale == 'English' ? 'Description proposal: {{generated_description}}. Validate or modify?' : 'Proposition de description : {{generated_description}}. Valider ou modifier ?'}}",
+      "message_en": "Description proposal: {{generated_description}}. Validate or modify?",
+      "message_fr": "Proposition de description : {{generated_description}}. Valider ou modifier ?",
       "options_fr": ["Valider", "Modifier"],
       "options_en": ["Validate", "Modify"],
       "on_reply": {
@@ -335,7 +349,8 @@
     "desc_rewrite": {
       "type": "question",
       "attribute": "desc_feedback",
-      "label": "{{locale == 'English' ? 'What should I adjust? (tone, options, service history...)' : 'Que dois-je ajuster ? (ton, options, historique entretien…)'}}",
+      "label_en": "What should I adjust? (tone, options, service history...)",
+      "label_fr": "Que dois-je ajuster ? (ton, options, historique entretien…)",
       "input": { "type": "text" },
       "validation": { "required": true },
       "effects": [
@@ -350,7 +365,8 @@
 
     "media_stub": {
       "type": "prompt",
-      "message": "{{locale == 'English' ? 'Would you like to add photos now?' : 'Souhaitez-vous ajouter des photos maintenant ?'}}",
+      "message_en": "Would you like to add photos now?",
+      "message_fr": "Souhaitez-vous ajouter des photos maintenant ?",
       "options_fr": ["Oui", "Non"],
       "options_en": ["Yes", "No"],
       "on_reply": {
@@ -363,7 +379,8 @@
 
     "media_upload": {
       "type": "action",
-      "message": "{{locale == 'English' ? 'Opening upload link…' : 'Ouverture du lien de téléchargement…'}}",
+      "message_en": "Opening upload link…",
+      "message_fr": "Ouverture du lien de téléchargement…",
       "effects": [
         { "call": "media.upload_url" }
       ],
@@ -372,7 +389,8 @@
 
     "finalize": {
       "type": "terminal",
-      "message": "{{locale == 'English' ? 'Great! Your ad is ready. You can publish it or open the UI to adjust fields.' : 'Parfait ! Votre annonce est prête. Vous pouvez la publier ou ouvrir l’interface pour ajuster les champs.'}}",
+      "message_en": "Great! Your ad is ready. You can publish it or open the UI to adjust fields.",
+      "message_fr": "Parfait ! Votre annonce est prête. Vous pouvez la publier ou ouvrir l’interface pour ajuster les champs.",
       "effects": [
         { "set": { "flow_state": "completed" } }
       ]

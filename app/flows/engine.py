@@ -1,4 +1,18 @@
 # app/flows/engine.py
+# -*- coding: utf-8 -*-
+"""
+Moteur de flow JSON (prompt / question / action / terminal)
+
+Points clés :
+- Templating léger : variables {{ var }} + ternaires {{ cond ? A : B }}
+- Localisation native : message_fr / message_en, label_fr / label_en
+- Effects reliés au code : set / incr / call (pricing.estimate, generation.title, generation.description, media.upload_url)
+- Boucle de feedback : exécuter les effects aussi dans les états 'question' après avoir sauvegardé la réponse
+- Ternaires robustes : supporte `var == 'x'`, `var != 'x'`, `var` (truthy), `!var` / `not var`
+
+Ce moteur est prévu pour fonctionner avec le flow `publish_voitures.json` partagé.
+"""
+
 from __future__ import annotations
 
 import json
@@ -6,27 +20,28 @@ import os
 import re
 from typing import Any, Dict, Optional, List
 
-# === Intégration génération LLM (titre/description/réécriture) ===
-# Ces fonctions doivent exister dans app/services/generation.py
 from app.services.generation import (
     generate_title,
     generate_description,
-    rewrite_text,
+    rewrite_text,  # prêt si un call "generation.rewrite" est ajouté côté flow
 )
 
 FLOW_FILE = os.path.join(os.path.dirname(__file__), "publish_voitures.json")
 
-# ----------------- Mini moteur de templating -----------------
-# Supporte:
-#   - ternaires: {{ locale == 'English' ? 'Hello' : 'Bonjour' }}
-#   - variables: {{ marque }}, {{kilometrage}}, etc.
-_var_pat = re.compile(r"{{\s*([a-zA-Z0-9_\.]+)\s*}}")
-_ternary_pat = re.compile(r"{{\s*(.+?)\s*\?\s*(.+?)\s*:\s*(.+?)\s*}}")
+# ---------------------------------------------------------------------------
+# Templating minimal
+# ---------------------------------------------------------------------------
 
+# {{ variable }}
+_var_pat = re.compile(r"{{\s*([a-zA-Z0-9_\.]+)\s*}}")
+
+# {{ condition ? A : B }}
+# (on évaluera la condition nous-mêmes ; A et B peuvent contenir d'autres expressions)
+_ternary_pat = re.compile(r"{{\s*(.+?)\s*\?\s*(.+?)\s*:\s*(.+?)\s*}}", re.DOTALL)
 
 def _lookup(ctx: Dict[str, Any], path: str) -> Any:
-    """Recherche récursive d’une variable dans le contexte (vars du flow)."""
-    cur = ctx
+    """Accès simple par 'a.b.c' dans le dictionnaire ctx."""
+    cur: Any = ctx
     for part in path.split("."):
         if isinstance(cur, dict) and part in cur:
             cur = cur[part]
@@ -34,75 +49,112 @@ def _lookup(ctx: Dict[str, Any], path: str) -> Any:
             return None
     return cur
 
+def _eval_ternary_condition(expr: str, ctx: Dict[str, Any]) -> bool:
+    """
+    Évalue la condition des ternaires avec 4 formes supportées :
+      1)  foo == 'bar'
+      2)  foo != 'bar'
+      3)  foo           (truthy si présent et non vide / non nul)
+      4)  !foo / not foo
+    """
+    expr = (expr or "").strip()
 
-def _render_value(value: str, ctx: Dict[str, Any]) -> str:
-    """Rend une string contenant {{var}} et ternaires {{ cond ? 'A' : 'B' }}."""
+    # 1) égalité / inégalité : foo == 'bar' | foo != 'bar'
+    m = re.match(r"^\s*([a-zA-Z0-9_\.]+)\s*([=!]=)\s*'([^']*)'\s*$", expr)
+    if m:
+        left_name, op, right_val = m.group(1), m.group(2), m.group(3)
+        left = _lookup(ctx, left_name)
+        if op == "==":
+            return str(left) == right_val
+        else:
+            return str(left) != right_val
 
-    def ternary_sub(m):
-        cond, a, b = m.group(1), m.group(2), m.group(3)
-        cond_eval = False
-        cm = re.match(r"^\s*([a-zA-Z0-9_\.]+)\s*==\s*'([^']*)'\s*$", cond)
-        if cm:
-            left = _lookup(ctx, cm.group(1))
-            cond_eval = (str(left) == cm.group(2))
-        chosen = a if cond_eval else b
+    # 2) négation : !foo  ou  not foo
+    m = re.match(r"^\s*(!|not\s+)?\s*([a-zA-Z0-9_\.]+)\s*$", expr)
+    if m:
+        neg, name = m.group(1), m.group(2)
+        val = _lookup(ctx, name)
+        truthy = bool(val) and str(val).lower() not in {"", "0", "false", "none", "null"}
+        return not truthy if neg else truthy
+
+    # Par défaut : False si on ne reconnaît pas la forme
+    return False
+
+def _render_value(text: str, ctx: Dict[str, Any]) -> str:
+    """
+    Rend les ternaires puis les variables (2 passes).
+    - Les branches A/B peuvent elles-mêmes contenir des ternaires/variables (récursif).
+    - Si le résultat final est encadré entièrement par des quotes, on les retire.
+    """
+    if not isinstance(text, str):
+        return str(text)
+
+    # --- Pass 1 : ternaires ---
+    def ternary_sub(match: re.Match) -> str:
+        cond_raw, a_raw, b_raw = match.group(1), match.group(2), match.group(3)
+        cond_eval = _eval_ternary_condition(cond_raw, ctx)
+        chosen = a_raw if cond_eval else b_raw
+        # ⚠️ On re-rend récursivement la branche choisie (elle peut contenir {{}}, etc.)
         s = _render_value(chosen, ctx)
-        # enlève d’éventuelles quotes englobantes
-        if len(s) >= 2 and (s[0] == s[-1]) and s[0] in ("'", '"'):
+        # Si la branche est entièrement entre quotes, on dépouille (ex: 'texte')
+        if len(s) >= 2 and s[0] == s[-1] and s[0] in ("'", '"'):
             s = s[1:-1]
         return s
 
-    # 1) Évalue les ternaires
-    value = _ternary_pat.sub(ternary_sub, value)
+    # Remplacement itératif des ternaires (il peut y en avoir plusieurs / imbriquées)
+    prev = None
+    out = text
+    # Pour éviter les boucles infinies, on fait un nombre raisonnable d'itérations
+    for _ in range(10):
+        new_out = _ternary_pat.sub(ternary_sub, out)
+        if new_out == out:
+            break
+        out = new_out
 
-    # 2) Remplace les {{vars}}
-    def var_sub(m):
+    # --- Pass 2 : variables ---
+    def var_sub(m: re.Match) -> str:
         v = _lookup(ctx, m.group(1))
-        return str(v) if v is not None else ""
+        return "" if v is None else str(v)
 
-    out = _var_pat.sub(var_sub, value)
+    out = _var_pat.sub(var_sub, out)
 
-    # 3) Nettoyage final: quotes parasites
-    if len(out) >= 2 and (out[0] == out[-1]) and out[0] in ("'", '"'):
+    # Dépouiller des quotes globales éventuelles
+    if len(out) >= 2 and out[0] == out[-1] and out[0] in ("'", '"'):
         out = out[1:-1]
+
     return out
 
+# ---------------------------------------------------------------------------
+# Chargement du flow
+# ---------------------------------------------------------------------------
 
-# ----------------- Chargement du flow -----------------
 def load_flow() -> Dict[str, Any]:
-    """Charge le JSON de flow (voitures)."""
+    """Charge le JSON de flow."""
     with open(FLOW_FILE, "r", encoding="utf-8") as f:
         return json.load(f)
 
+# ---------------------------------------------------------------------------
+# Helpers : langue, options, localisation des champs
+# ---------------------------------------------------------------------------
 
-# ----------------- Helpers: langue, casse & options -----------------
 _YES = {"yes", "y", "oui", "o"}
 _NO = {"no", "n", "non"}
 
 _LANG_FR = {"fr", "français", "francais", "french", "france"}
 _LANG_EN = {"en", "eng", "english", "anglais"}
 
-
 def _norm(s: Optional[str]) -> str:
     return (s or "").strip().lower()
 
-
 def _canon_lang(s: str) -> Optional[str]:
-    """Normalise la langue en 'Français' ou 'English'."""
     v = _norm(s)
-    if v in _LANG_FR:
+    if v in _LANG_FR or v == "français" or v == "francais":
         return "Français"
-    if v in _LANG_EN:
-        return "English"
-    if v in {"français", "francais"}:
-        return "Français"
-    if v == "english":
+    if v in _LANG_EN or v == "english":
         return "English"
     return None
 
-
 def _canon_yes_no(s: str, locale: str) -> Optional[str]:
-    """Normalise Yes/No ou Oui/Non selon la locale active (insensible à la casse)."""
     v = _norm(s)
     if v in _YES:
         return "Yes" if locale == "English" else "Oui"
@@ -114,112 +166,132 @@ def _canon_yes_no(s: str, locale: str) -> Optional[str]:
         return v.capitalize()
     return None
 
-
 def _localized_prompt_options(state: Dict[str, Any], locale: str) -> Optional[List[str]]:
-    """
-    Pour les PROMPTS (assist_opt_in, recap, pricing...), on choisit les options
-    localisées si disponibles: options_fr / options_en ; sinon "options".
-    """
+    """Retourne les options localisées pour un état 'prompt'."""
     if locale == "English" and "options_en" in state:
         return state["options_en"]
     if locale != "English" and "options_fr" in state:
         return state["options_fr"]
     return state.get("options")
 
-
-def _canon_choice(
-    user_choice: Optional[str], options: Optional[List[str]], locale: str
-) -> Optional[str]:
+def _localized_value(state: Dict[str, Any], key: str, locale: str) -> Optional[str]:
     """
-    Essaie de ramener l’input user à une option canonique (oui/non/langue),
-    sinon, match insensible à la casse si options listées.
+    Récupère une valeur localisée :
+      - message_en / message_fr  (fallback sur message)
+      - label_en   / label_fr    (fallback sur label)
+    """
+    if locale == "English":
+        if f"{key}_en" in state:
+            return state[f"{key}_en"]
+        if key in state:
+            return state[key]
+        if f"{key}_fr" in state:
+            return state[f"{key}_fr"]
+    else:
+        if f"{key}_fr" in state:
+            return state[f"{key}_fr"]
+        if key in state:
+            return state[key]
+        if f"{key}_en" in state:
+            return state[f"{key}_en"]
+    return None
+
+def _canon_choice(user_choice: Optional[str], options: Optional[List[str]], locale: str) -> Optional[str]:
+    """
+    Ramène l'input utilisateur à une option canonique (oui/non/langue)
+    sinon match insensible à la casse.
     """
     if user_choice is None:
         return None
     txt = _norm(user_choice)
     if not options:
-        # cas q_locale / prompts sans options localisées
         lang = _canon_lang(txt)
         if lang:
             return lang
         yn = _canon_yes_no(txt, locale or "Français")
         if yn:
             return yn
-        return user_choice  # laisse passer tel quel
-    low_map = {_norm(o): o for o in options}
+        return user_choice
+    low_map = {_norm(o): o for o in (options or [])}
     if txt in low_map:
         return low_map[txt]
     yn = _canon_yes_no(txt, locale or "Français")
-    if yn and yn in options:
+    if yn and yn in (options or []):
         return yn
     return None
 
+# ---------------------------------------------------------------------------
+# Effects (set / incr / call)
+# ---------------------------------------------------------------------------
 
-# ----------------- Effects -----------------
 def _apply_set(ctx: Dict[str, Any], payload: Dict[str, Any]):
-    """Effect: set de variables dans le contexte (avec templating rendu)."""
+    """Effect: set → pose des variables dans le contexte (avec templating)."""
     for k, v in payload.items():
         if isinstance(v, str):
             v = _render_value(v, ctx)
         ctx[k] = v
 
-
 def _apply_incr(ctx: Dict[str, Any], key: str):
-    """Effect: incrément d’un compteur (ex: title_iters)."""
+    """Effect: incr → incrémente un compteur simple."""
     ctx[key] = int(ctx.get(key, 0)) + 1
-
 
 def _apply_call(ctx: Dict[str, Any], call: str, with_feedback: Optional[str] = None):
     """
-    Effect: appels métiers.
-    Supporte: pricing.estimate, generation.title, generation.description, media.upload_url.
-    Intègre réellement la génération via app/services/generation.py.
+    Effect: call → connecte le flow JSON aux fonctions Python (services).
+    - pricing.estimate        (stub)
+    - generation.title        (avec feedback optionnel)
+    - generation.description  (avec feedback optionnel)
+    - media.upload_url        (stub)
     """
     try:
         if call == "pricing.estimate":
-            # Stub simple : tu pourras brancher un vrai modèle plus tard
             ctx["price_suggested"] = max(1000, int(ctx.get("price_user") or 0)) or 15000
             ctx["pricing_confidence"] = 0.72
 
         elif call == "generation.title":
             feedback = ctx.get(with_feedback) if with_feedback else ""
-            # Utilise ctx (locale + attributs déjà posés)
-            title = generate_title(ctx, feedback=feedback or "")
-            # fallback de sécurité
+            try:
+                title = generate_title(ctx, feedback=feedback or "")
+            except Exception as e:
+                ctx.setdefault("errors", []).append(f"generation.title error: {type(e).__name__}: {e}")
+                title = ""
+
             if not title:
+                # Fallback déterministe
                 marque = ctx.get("marque", "")
                 modele = ctx.get("modele", "")
                 year = ctx.get("annee", "")
-                title = f"{marque} {modele} {year}".strip()
+                title = " ".join([str(x) for x in [marque, modele, year] if x]).strip() or "Annonce véhicule"
             ctx["generated_title"] = title
 
         elif call == "generation.description":
             feedback = ctx.get(with_feedback) if with_feedback else ""
-            desc = generate_description(ctx, feedback=feedback or "")
+            try:
+                desc = generate_description(ctx, feedback=feedback or "")
+            except Exception as e:
+                ctx.setdefault("errors", []).append(f"generation.description error: {type(e).__name__}: {e}")
+                desc = ""
+
             if not desc:
-                # fallback sobre
+                # Fallback déterministe
                 base = (
                     f"{ctx.get('marque','')} {ctx.get('modele','')} {ctx.get('annee','')}, "
                     f"{ctx.get('kilometrage','')} km, {ctx.get('carburant','')}, "
                     f"boîte {ctx.get('boite','')}, couleur {ctx.get('couleur','')}."
-                )
+                ).strip()
                 if feedback:
                     base += f" Ajustements: {feedback}"
-                desc = base
+                desc = base or "Annonce véhicule."
             ctx["generated_description"] = desc
 
         elif call == "media.upload_url":
             ctx["upload_url"] = "https://example.com/upload/mock"
 
-        # (Optionnel) un futur call "generation.rewrite" pourrait utiliser rewrite_text(ctx, current, feedback)
-
     except Exception as e:
-        # En cas d’erreur LLM/SDK: ne bloque pas le flow
         ctx.setdefault("errors", []).append(f"call:{call} -> {type(e).__name__}: {e}")
 
-
 def apply_effects(ctx: Dict[str, Any], effects: Optional[list]):
-    """Applique enchaînement d’effets (set/incr/call)."""
+    """Applique la liste d'effets d'un état."""
     if not effects:
         return
     for eff in effects:
@@ -230,10 +302,12 @@ def apply_effects(ctx: Dict[str, Any], effects: Optional[list]):
         if "call" in eff:
             _apply_call(ctx, eff["call"], eff.get("with_feedback"))
 
+# ---------------------------------------------------------------------------
+# Validation simple
+# ---------------------------------------------------------------------------
 
-# ----------------- Validation simple -----------------
 def _validate(state: Dict[str, Any], value: str) -> bool:
-    """Validation simple (required, int range, longueur min)."""
+    """Validation basique selon la config de l'état."""
     v = state.get("validation") or {}
     if v.get("required") and not str(value).strip():
         return False
@@ -249,31 +323,26 @@ def _validate(state: Dict[str, Any], value: str) -> bool:
         return False
     return True
 
+# ---------------------------------------------------------------------------
+# Engine API
+# ---------------------------------------------------------------------------
 
-# ----------------- Engine API -----------------
 def ensure_flow_session(sess: Dict[str, Any], flow: Dict[str, Any]):
-    """Initialise les champs essentiels de la session flow si manquants."""
+    """Initialise la session de flow si nécessaire."""
     sess.setdefault("flow", {})
     sess["flow"]["id"] = flow["flow_id"]
     sess["flow"].setdefault("vars", {})
     sess["flow"].setdefault("counters", {})
     sess["flow"].setdefault("current", flow["entry"])
 
-
 def start_flow(flow: Dict[str, Any], sess: Dict[str, Any]) -> Dict[str, Any]:
-    """Démarre le flow depuis l’état d’entrée (reset propre)."""
-    sess["flow"] = {
-        "id": flow["flow_id"],
-        "vars": {},
-        "counters": {},
-        "current": flow["entry"],
-    }
+    """Reset et démarre le flow à l'état d'entrée."""
+    sess["flow"] = {"id": flow["flow_id"], "vars": {}, "counters": {}, "current": flow["entry"]}
     first_state = flow["states"][flow["entry"]]
     return render_state(first_state, sess["flow"]["vars"])
 
-
 def get_current_state(flow: Dict[str, Any], sess: Dict[str, Any]) -> Dict[str, Any]:
-    """Récupère l’état courant de la session (sinon entry)."""
+    """Retourne l'état courant."""
     states = flow["states"]
     cur = sess["flow"].get("current")
     if not cur:
@@ -281,22 +350,20 @@ def get_current_state(flow: Dict[str, Any], sess: Dict[str, Any]) -> Dict[str, A
         sess["flow"]["current"] = cur
     return states[cur]
 
-
 def next_for_prompt(flow, sess, user_choice: Optional[str]) -> Dict[str, Any]:
-    """Gestion d’un prompt (Oui/Non/langue/etc.)."""
+    """Gestion d'un état 'prompt' (boutons Oui/Non/langue...)."""
     states = flow["states"]
     cur = get_current_state(flow, sess)
     locale = sess["flow"]["vars"].get("locale") or "Français"
-
     loc_options = _localized_prompt_options(cur, locale)
 
-    # Canoniser la langue si q_locale
+    # Normalise la langue si c'est le tout premier choix
     if user_choice is not None and cur is states[flow["entry"]]:
         canon = _canon_lang(user_choice)
         if canon:
             user_choice = canon
 
-    # Injecter temporairement user_choice dans le contexte pour les effets ({{user_choice}})
+    # Exécute les effets (peuvent dépendre de {{user_choice}})
     if user_choice is not None:
         sess["flow"]["vars"]["user_choice"] = user_choice
         apply_effects(sess["flow"]["vars"], cur.get("effects"))
@@ -316,27 +383,25 @@ def next_for_prompt(flow, sess, user_choice: Optional[str]) -> Dict[str, Any]:
         nxt = cur["on_complete"]
 
     if not nxt:
-        # choix invalide → rester sur place (le front réaffiche les options)
         return render_state(cur, sess["flow"]["vars"])
 
     sess["flow"]["current"] = nxt
     return render_state(states[nxt], sess["flow"]["vars"])
 
-
 def next_for_question(flow, sess, answer_text: str) -> Dict[str, Any]:
-    """Gestion d’une question attribut (input texte/enum/int)."""
+    """Gestion d'un état 'question' (saisie attributs)."""
     states = flow["states"]
     cur_key = sess["flow"]["current"]
     cur = states[cur_key]
     attr = cur["attribute"]
 
-    # Validation
+    # 1) Validation
     if not _validate(cur, answer_text):
         nxt = cur.get("on_invalid") or cur_key
         sess["flow"]["current"] = nxt
         return render_state(states[nxt], sess["flow"]["vars"])
 
-    # Mapping EN->FR si enum et locale EN
+    # 2) Mapping EN->FR si enum et locale EN (via enum_map_en)
     locale = sess["flow"]["vars"].get("locale") or "Français"
     val = answer_text
     if cur.get("input", {}).get("type") == "enum" and locale == "English":
@@ -345,16 +410,19 @@ def next_for_question(flow, sess, answer_text: str) -> Dict[str, Any]:
         if key in m:
             val = m[key]
 
-    # Sauvegarder réponse
+    # 3) Sauvegarder la réponse
     sess["flow"]["vars"][attr] = val
 
+    # 4) ⚠️ Exécuter les effects de l'état question (ex: generation.* avec with_feedback)
+    apply_effects(sess["flow"]["vars"], cur.get("effects"))
+
+    # 5) Transition
     nxt = cur.get("on_valid") or cur_key
     sess["flow"]["current"] = nxt
     return render_state(states[nxt], sess["flow"]["vars"])
 
-
 def next_for_action(flow, sess) -> Dict[str, Any]:
-    """Gestion d’un état action (appel pricing/generation/etc.)."""
+    """Gestion d'un état 'action' (appel pricing/generation/etc.)."""
     states = flow["states"]
     cur = get_current_state(flow, sess)
     apply_effects(sess["flow"]["vars"], cur.get("effects"))
@@ -364,9 +432,8 @@ def next_for_action(flow, sess) -> Dict[str, Any]:
     sess["flow"]["current"] = nxt
     return render_state(states[nxt], sess["flow"]["vars"])
 
-
 def check_guards(cur: Dict[str, Any], sess: Dict[str, Any]) -> Optional[str]:
-    """Vérifie les gardes (sauts conditionnels selon compteurs)."""
+    """Garde-fous (ex: limite d'itérations feedback)."""
     guards = cur.get("guards") or []
     for g in guards:
         if g.get("if_counter_exceeds"):
@@ -376,35 +443,41 @@ def check_guards(cur: Dict[str, Any], sess: Dict[str, Any]) -> Optional[str]:
                 return g["goto"]
     return None
 
-
 def render_state(state: Dict[str, Any], vars_ctx: Dict[str, Any]) -> Dict[str, Any]:
     """
-    Prépare la réponse API pour un état donné.
-    - message/label: double passe pour bien résoudre les ternaires imbriquées + {{vars}}
-    - options: prompt → options localisées ; question enum → options (FR/EN)
+    Prépare la réponse API pour l'état courant :
+    - message/label localisés (message_fr/message_en, label_fr/label_en) avec fallback
+    - templating double passe (ternaires + variables)
+    - options : prompt → localisées ; question enum → options (FR/EN)
     """
     locale = vars_ctx.get("locale") or "Français"
     rendered: Dict[str, Any] = {"type": state["type"]}
 
-    if "message" in state:
-        msg = _render_value(state["message"], vars_ctx)
-        msg = _render_value(msg, vars_ctx)  # seconde passe si besoin
+    # Message (localisé)
+    msg_tpl = _localized_value(state, "message", locale)
+    if msg_tpl is not None:
+        msg = _render_value(msg_tpl, vars_ctx)
+        # Double passe utile si la 1re passe produit de nouvelles expressions
+        msg = _render_value(msg, vars_ctx)
         rendered["message"] = msg
 
-    if "label" in state:
-        lab = _render_value(state["label"], vars_ctx)
+    # Label (localisé)
+    lab_tpl = _localized_value(state, "label", locale)
+    if lab_tpl is not None:
+        lab = _render_value(lab_tpl, vars_ctx)
         lab = _render_value(lab, vars_ctx)
         rendered["label"] = lab
 
+    # Options (prompt)
     if state["type"] == "prompt":
         loc_opts = _localized_prompt_options(state, locale)
         if loc_opts is not None:
             rendered["options"] = loc_opts
 
+    # Attributs & options (question enum)
     if state["type"] == "question":
         rendered["attribute"] = state["attribute"]
         if state.get("input", {}).get("type") == "enum":
-            # options côté question (boutons)
             if locale == "English" and "options_en" in state["input"]:
                 rendered["options"] = state["input"]["options_en"]
             else:
@@ -412,15 +485,19 @@ def render_state(state: Dict[str, Any], vars_ctx: Dict[str, Any]) -> Dict[str, A
 
     return rendered
 
-
 def step(flow: Dict[str, Any], sess: Dict[str, Any], user_input: Optional[str]) -> Dict[str, Any]:
-    """Boucle principale du moteur (appelée à chaque /flow/reply)."""
+    """
+    Boucle principale du moteur (appelée à chaque /flow/reply).
+    - Récupère l'état courant
+    - Applique garde-fous
+    - Délègue selon le type d'état
+    """
     ensure_flow_session(sess, flow)
     states = flow["states"]
 
     cur = get_current_state(flow, sess)
 
-    # Guards éventuels (ex: limite d’itérations feedback)
+    # Guards éventuels (ex: limite feedback)
     goto = check_guards(cur, sess)
     if goto:
         sess["flow"]["current"] = goto
@@ -436,7 +513,6 @@ def step(flow: Dict[str, Any], sess: Dict[str, Any], user_input: Optional[str]) 
     elif stype == "action":
         return next_for_action(flow, sess)
     elif stype == "noop":
-        # auto-advance pour éviter les blocages
         nxt = cur.get("on_complete")
         if nxt:
             sess["flow"]["current"] = nxt
@@ -446,6 +522,10 @@ def step(flow: Dict[str, Any], sess: Dict[str, Any], user_input: Optional[str]) 
         return render_state(cur, sess["flow"]["vars"])
     else:
         return {"type": "error", "message": f"Unknown state type: {stype}"}
+
+
+
+
 
 
 

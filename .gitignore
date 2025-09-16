@@ -1,0 +1,4 @@
+# modèles lourds
+/models/*.gguf
+/models/*.bin
+/models/*.pt

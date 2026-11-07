@@ -1,4 +1,4 @@
-# Contexte du projet : Marketplace KIRA 🛒 - KIRA IA Chatbot Vendeur
+# Contexte du projet : Marketplace KIRA  - KIRA IA Chatbot Vendeur
 
 KIRA est une application mobile marketplace permettant aux utilisateurs de vendre ou louer des biens, développée en Flutter. Elle facilite la publication d’annonces pour divers produits et services. Actuellement, le projet se concentre sur la sous-catégorie des véhicules, mais à terme, il prévoit de s'étendre à d'autres catégories telles que l'immobilier, les services, l'électronique, les vêtements, et bien plus encore.
 
@@ -14,7 +14,7 @@ Bien que KIRA soit une marketplace générale, le chatbot IA se concentre pour l
 
 Ce texte introduit le projet KIRA et met en évidence la nécessité du chatbot IA pour optimiser les annonces tout en anticipant son évolution vers d'autres catégories à l'avenir.
 
-## Technologies utilisées 🚀
+## Technologies utilisées 
 
 | Élément                       | Outil / Langage                        | Rôle 💻                                                   |
 |-------------------------------|----------------------------------------|----------------------------------------------------------|
